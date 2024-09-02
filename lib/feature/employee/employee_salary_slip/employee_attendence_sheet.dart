@@ -1,5 +1,6 @@
 import 'package:employeemanager/constant/extension_constants.dart';
 import 'package:employeemanager/constant/string_constant.dart';
+import 'package:employeemanager/feature/employee/employee_salary_slip/pdf_view_screen.dart';
 import 'package:employeemanager/models/employee.dart';
 import 'package:employeemanager/theme/app_colors.dart';
 import 'package:flutter/material.dart';
@@ -244,6 +245,25 @@ class _EmployeeAttendenceSheetState
                   ),
                 ),
               ),
+              const SizedBox(height: 15),
+              ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => PdfViewScreen(
+                          employee: widget.employee,
+                          selectedDateRange: selectedDateRange,
+                        ),
+                      ),
+                    );
+                  },
+                  child: Text(
+                    "Generate Pay Slip ",
+                    style: theme.textTheme.bodyLarge!.copyWith(
+                      color: AppColors.primary,
+                    ),
+                  ))
             ],
           ),
         ),
