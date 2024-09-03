@@ -1,5 +1,6 @@
 import 'package:employeemanager/theme/app_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 /// Extension to get localization value using context
 extension BuildContextHelper on BuildContext {
@@ -19,6 +20,13 @@ extension BuildContextHelper on BuildContext {
         duration: const Duration(seconds: 2),
       ),
     );
+  }
+
+  String formatDate(String dateTime) {
+    DateTime parsedDate = DateTime.parse(
+        dateTime); // Assuming dateTime is in a standard ISO format, like '2024-08-04'
+    String formattedDate = DateFormat('EEE, d MMM').format(parsedDate);
+    return formattedDate;
   }
 
   void showSuccessSnackBar(String message) {

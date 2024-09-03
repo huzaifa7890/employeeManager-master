@@ -14,7 +14,8 @@ dependencies:
   # flutter_localizations:
   flutter:
     sdk: flutter
-
+dependency_overrides:
+  win32: 3.0.0
 
   cupertino_icons: ^1.0.6
   flutter_riverpod: ^2.5.1
@@ -38,6 +39,9 @@ dependencies:
   shared_preferences: ^2.2.3
   flutter_date_pickers: ^0.4.3
   date_picker_plus: ^4.1.0
+  pdf: ^3.10.1
+  printing: ^5.11.0
+  share_plus: ^6.3.0
 
 dev_dependencies:
   flutter_test:
