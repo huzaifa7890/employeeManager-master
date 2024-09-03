@@ -117,341 +117,348 @@ class _MarkAttendenceSheetState extends ConsumerState<MarkAttendenceSheet> {
   Widget build(BuildContext context) {
     final status = ref.watch(addEmployeeProvider).employeeAttendenceStatus;
     final theme = Theme.of(context);
-
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: AppColors.secondary,
-        iconTheme: const IconThemeData(color: AppColors.primary),
-        title: Text(
-          "Mark Attendence",
-          style: theme.textTheme.titleMedium!.copyWith(
-            color: AppColors.primary,
-            fontWeight: FontWeight.w700,
+    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent,
+      statusBarIconBrightness: Brightness.light,
+    ));
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: AppColors.secondary,
+          iconTheme: const IconThemeData(color: AppColors.primary),
+          title: Text(
+            "Mark Attendence",
+            style: theme.textTheme.titleMedium!.copyWith(
+              color: AppColors.primary,
+              fontWeight: FontWeight.w700,
+            ),
           ),
         ),
-      ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 15.0, horizontal: 20),
-          child: Column(
-            children: [
-              Container(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 15.0, horizontal: 8),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  color: AppColors.fieldGrey,
-                ),
-                child: Column(
-                  children: [
-                    Row(
-                      children: [
-                        Column(
-                          children: [
-                            Container(
-                              height: 80,
-                              width: 80,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(60),
-                                border: Border.all(
-                                  color: Colors.blue,
-                                  width:
-                                      4, // Adjust this value to your preference
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 15.0, horizontal: 20),
+            child: Column(
+              children: [
+                Container(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 15.0, horizontal: 8),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: AppColors.fieldGrey,
+                  ),
+                  child: Column(
+                    children: [
+                      Row(
+                        children: [
+                          Column(
+                            children: [
+                              Container(
+                                height: 80,
+                                width: 80,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(60),
+                                  border: Border.all(
+                                    color: Colors.blue,
+                                    width:
+                                        4, // Adjust this value to your preference
+                                  ),
+                                ),
+                                child: CircleAvatar(
+                                  maxRadius: 60,
+                                  minRadius: 60,
+                                  backgroundColor: AppColors.fieldGrey,
+                                  child: widget.employee.employeePic!.isNotEmpty
+                                      ? ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(51),
+                                          child: Image.network(
+                                            widget.employee.employeePic!,
+                                            height: 100,
+                                            width: 100,
+                                            fit: BoxFit.cover,
+                                          ),
+                                        )
+                                      : Image.asset(
+                                          AssetImages.personIcon,
+                                          height: 55,
+                                          width: 55,
+                                          fit: BoxFit.contain,
+                                        ),
                                 ),
                               ),
-                              child: CircleAvatar(
-                                maxRadius: 60,
-                                minRadius: 60,
-                                backgroundColor: AppColors.fieldGrey,
-                                child: widget.employee.employeePic!.isNotEmpty
-                                    ? ClipRRect(
-                                        borderRadius: BorderRadius.circular(51),
-                                        child: Image.network(
-                                          widget.employee.employeePic!,
-                                          height: 100,
-                                          width: 100,
-                                          fit: BoxFit.cover,
-                                        ),
-                                      )
-                                    : Image.asset(
-                                        AssetImages.personIcon,
-                                        height: 55,
-                                        width: 55,
-                                        fit: BoxFit.contain,
-                                      ),
+                            ],
+                          ),
+                          const SizedBox(width: 20),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                widget.employee.name!,
+                                style: theme.textTheme.bodyLarge,
                               ),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(width: 20),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              widget.employee.name!,
-                              style: theme.textTheme.bodyLarge,
-                            ),
-                            Text(
-                              (widget.employee.designation).toString(),
-                              style: theme.textTheme.bodyMedium,
-                            ),
-                            Text(
-                              (widget.employee.cnicId).toString(),
-                              style: theme.textTheme.bodyMedium,
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(height: 20),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Text(
-                    "Date",
-                    style: theme.textTheme.bodyLarge,
-                  ),
-                  GestureDetector(
-                    onTap: () => _selectDate(context),
-                    child: Container(
-                      width: 200,
-                      height: 50,
-                      decoration: BoxDecoration(
-                        color: AppColors.purple,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Center(
-                        child: Text(
-                          selectedDate != null
-                              ? DateFormat('dd MMMM y').format(selectedDate!)
-                              : DateFormat('dd MMMM y').format(DateTime.now()),
-                          style: theme.textTheme.bodyLarge!
-                              .copyWith(color: AppColors.primary),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 20),
-              // Display attendance checkboxes
-              SizedBox(
-                width: MediaQuery.of(context).size.width,
-                child: Center(
-                  child: Wrap(
-                    spacing: 8,
-                    children: EmployeeAttendenceStatus.values.map((item) {
-                      return AttendenceMarkWidget(
-                        text: getEmployeeAttendenceStatus(item),
-                        isSelected: selectEmployeeAttendence == item,
-                        onPressed: () {
-                          setState(() {
-                            selectEmployeeAttendence = item;
-                          });
-                          ref
-                              .read(addEmployeeProvider.notifier)
-                              .setAttendence(item);
-                        },
-                      );
-                    }).toList(),
-                  ),
-                ),
-              ),
-              const SizedBox(height: 10),
-              Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(25),
-                  color: AppColors.fieldGrey,
-                ),
-                child: Row(
-                  children: [
-                    const SizedBox(width: 10),
-                    Text(
-                      "Basic Pay",
-                      style: theme.textTheme.bodyLarge,
-                    ),
-                    const SizedBox(width: 10),
-                    Expanded(
-                      child: AppTextField(
-                        height: 65,
-                        enabled: false,
-                        // hintText: "Basic Pay",
-                        textAlign: TextAlign.end,
-                        textController: basicPayController,
-                        fillColor: AppColors.fieldGrey,
-                        border: const OutlineInputBorder(
-                          borderSide: BorderSide.none,
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(25),
+                              Text(
+                                (widget.employee.designation).toString(),
+                                style: theme.textTheme.bodyMedium,
+                              ),
+                              Text(
+                                (widget.employee.cnicId).toString(),
+                                style: theme.textTheme.bodyMedium,
+                              ),
+                            ],
                           ),
-                        ),
-                        validator: (value) {
-                          if (value!.isEmpty) {
-                            return "Please Check Basic Pay";
-                          }
-                          return null;
-                        },
-                        hintStyle: theme.textTheme.bodyLarge,
-                        lines: 1,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(height: 10),
-              Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(25),
-                  color: AppColors.fieldGrey,
-                ),
-                child: Row(
-                  children: [
-                    const SizedBox(width: 10),
-                    Text(
-                      "Tax/Debit",
-                      style: theme.textTheme.bodyLarge,
-                    ),
-                    const SizedBox(width: 10),
-                    Expanded(
-                      child: AppTextField(
-                        height: 65,
-                        // hintText: "Tax/Debit",
-                        textAlign: TextAlign.end,
-                        textController: taxDebitController,
-                        fillColor: AppColors.fieldGrey,
-                        keyboardType: TextInputType.number,
-                        inputFormatters: [
-                          FilteringTextInputFormatter.digitsOnly,
                         ],
-                        border: const OutlineInputBorder(
-                          borderSide: BorderSide.none,
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(25),
-                          ),
-                        ),
-                        validator: (value) {
-                          if (value!.isEmpty) {
-                            return "Please Check Tax/Debit";
-                          }
-                          return null;
-                        },
-                        hintStyle: theme.textTheme.bodyLarge,
-                        lines: 1,
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-              const SizedBox(height: 10),
-              Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(25),
-                  color: AppColors.fieldGrey,
-                ),
-                child: Row(
+                const SizedBox(height: 20),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    const SizedBox(width: 10),
                     Text(
-                      "Bonus",
+                      "Date",
                       style: theme.textTheme.bodyLarge,
                     ),
-                    const SizedBox(width: 10),
-                    Expanded(
-                      child: AppTextField(
-                        height: 65,
-                        // hintText: "Bonus",
-                        textAlign: TextAlign.end,
-                        textController: bonusController,
-                        keyboardType: TextInputType.number,
-                        inputFormatters: [
-                          FilteringTextInputFormatter.digitsOnly,
-                        ],
-                        fillColor: AppColors.fieldGrey,
-                        border: const OutlineInputBorder(
-                          borderSide: BorderSide.none,
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(25),
+                    GestureDetector(
+                      onTap: () => _selectDate(context),
+                      child: Container(
+                        width: 200,
+                        height: 50,
+                        decoration: BoxDecoration(
+                          color: AppColors.purple,
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Center(
+                          child: Text(
+                            selectedDate != null
+                                ? DateFormat('dd MMMM y').format(selectedDate!)
+                                : DateFormat('dd MMMM y')
+                                    .format(DateTime.now()),
+                            style: theme.textTheme.bodyLarge!
+                                .copyWith(color: AppColors.primary),
                           ),
                         ),
-                        validator: (value) {
-                          if (value!.isEmpty) {
-                            return "Please Check Bonus";
-                          }
-                          return null;
-                        },
-                        hintStyle: theme.textTheme.bodyLarge,
-                        lines: 1,
                       ),
                     ),
                   ],
                 ),
-              ),
-              const SizedBox(height: 10),
-              Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(25),
-                  color: AppColors.fieldGrey,
-                ),
-                child: Row(
-                  children: [
-                    const SizedBox(width: 10),
-                    Text(
-                      "Total Payments",
-                      style: theme.textTheme.bodyLarge,
+                const SizedBox(height: 20),
+                // Display attendance checkboxes
+                SizedBox(
+                  width: MediaQuery.of(context).size.width,
+                  child: Center(
+                    child: Wrap(
+                      spacing: 8,
+                      children: EmployeeAttendenceStatus.values.map((item) {
+                        return AttendenceMarkWidget(
+                          text: getEmployeeAttendenceStatus(item),
+                          isSelected: selectEmployeeAttendence == item,
+                          onPressed: () {
+                            setState(() {
+                              selectEmployeeAttendence = item;
+                            });
+                            ref
+                                .read(addEmployeeProvider.notifier)
+                                .setAttendence(item);
+                          },
+                        );
+                      }).toList(),
                     ),
-                    const SizedBox(width: 10),
-                    Expanded(
-                      child: AppTextField(
-                        height: 65,
-                        enabled: false,
-                        // hintText: "Total Payments",
-                        textAlign: TextAlign.end,
-                        textController: totalController,
-                        fillColor: AppColors.fieldGrey,
-                        border: const OutlineInputBorder(
-                          borderSide: BorderSide.none,
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(25),
-                          ),
-                        ),
-                        validator: (value) {
-                          if (value!.isEmpty) {
-                            return "Please Check Total Payments";
-                          }
-                          return null;
-                        },
-                        hintStyle: theme.textTheme.bodyLarge,
-                        lines: 1,
+                  ),
+                ),
+                const SizedBox(height: 10),
+                Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(25),
+                    color: AppColors.fieldGrey,
+                  ),
+                  child: Row(
+                    children: [
+                      const SizedBox(width: 10),
+                      Text(
+                        "Basic Pay",
+                        style: theme.textTheme.bodyLarge,
                       ),
-                    ),
-                  ],
+                      const SizedBox(width: 10),
+                      Expanded(
+                        child: AppTextField(
+                          height: 65,
+                          enabled: false,
+                          // hintText: "Basic Pay",
+                          textAlign: TextAlign.end,
+                          textController: basicPayController,
+                          fillColor: AppColors.fieldGrey,
+                          border: const OutlineInputBorder(
+                            borderSide: BorderSide.none,
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(25),
+                            ),
+                          ),
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              return "Please Check Basic Pay";
+                            }
+                            return null;
+                          },
+                          hintStyle: theme.textTheme.bodyLarge,
+                          lines: 1,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-              const SizedBox(height: 15),
-              ElevatedButton(
-                onPressed: () {
-                  final response =
-                      ref.read(addEmployeeProvider.notifier).updateAttendence(
-                            widget.employee.id,
-                            int.parse(taxDebitController.text),
-                            int.parse(bonusController.text),
-                            int.parse(totalController.text),
-                            selectedDate ?? DateTime.now(),
-                            status ?? EmployeeAttendenceStatus.present,
-                          );
-                  response.then((e) {
-                    if (e.errorMessage.isEmpty) {
-                      return context.showSuccessSnackBar(
-                          "Attendence updated succussfully");
-                    }
-                  });
-                },
-                child: const Text('Update'),
-              ),
-            ],
+                const SizedBox(height: 10),
+                Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(25),
+                    color: AppColors.fieldGrey,
+                  ),
+                  child: Row(
+                    children: [
+                      const SizedBox(width: 10),
+                      Text(
+                        "Tax/Debit",
+                        style: theme.textTheme.bodyLarge,
+                      ),
+                      const SizedBox(width: 10),
+                      Expanded(
+                        child: AppTextField(
+                          height: 65,
+                          // hintText: "Tax/Debit",
+                          textAlign: TextAlign.end,
+                          textController: taxDebitController,
+                          fillColor: AppColors.fieldGrey,
+                          keyboardType: TextInputType.number,
+                          inputFormatters: [
+                            FilteringTextInputFormatter.digitsOnly,
+                          ],
+                          border: const OutlineInputBorder(
+                            borderSide: BorderSide.none,
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(25),
+                            ),
+                          ),
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              return "Please Check Tax/Debit";
+                            }
+                            return null;
+                          },
+                          hintStyle: theme.textTheme.bodyLarge,
+                          lines: 1,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 10),
+                Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(25),
+                    color: AppColors.fieldGrey,
+                  ),
+                  child: Row(
+                    children: [
+                      const SizedBox(width: 10),
+                      Text(
+                        "Bonus",
+                        style: theme.textTheme.bodyLarge,
+                      ),
+                      const SizedBox(width: 10),
+                      Expanded(
+                        child: AppTextField(
+                          height: 65,
+                          // hintText: "Bonus",
+                          textAlign: TextAlign.end,
+                          textController: bonusController,
+                          keyboardType: TextInputType.number,
+                          inputFormatters: [
+                            FilteringTextInputFormatter.digitsOnly,
+                          ],
+                          fillColor: AppColors.fieldGrey,
+                          border: const OutlineInputBorder(
+                            borderSide: BorderSide.none,
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(25),
+                            ),
+                          ),
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              return "Please Check Bonus";
+                            }
+                            return null;
+                          },
+                          hintStyle: theme.textTheme.bodyLarge,
+                          lines: 1,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 10),
+                Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(25),
+                    color: AppColors.fieldGrey,
+                  ),
+                  child: Row(
+                    children: [
+                      const SizedBox(width: 10),
+                      Text(
+                        "Total Payments",
+                        style: theme.textTheme.bodyLarge,
+                      ),
+                      const SizedBox(width: 10),
+                      Expanded(
+                        child: AppTextField(
+                          height: 65,
+                          enabled: false,
+                          // hintText: "Total Payments",
+                          textAlign: TextAlign.end,
+                          textController: totalController,
+                          fillColor: AppColors.fieldGrey,
+                          border: const OutlineInputBorder(
+                            borderSide: BorderSide.none,
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(25),
+                            ),
+                          ),
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              return "Please Check Total Payments";
+                            }
+                            return null;
+                          },
+                          hintStyle: theme.textTheme.bodyLarge,
+                          lines: 1,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 15),
+                ElevatedButton(
+                  onPressed: () {
+                    final response =
+                        ref.read(addEmployeeProvider.notifier).updateAttendence(
+                              widget.employee.id,
+                              int.parse(taxDebitController.text),
+                              int.parse(bonusController.text),
+                              int.parse(totalController.text),
+                              selectedDate ?? DateTime.now(),
+                              status ?? EmployeeAttendenceStatus.present,
+                            );
+                    response.then((e) {
+                      if (e.errorMessage.isEmpty) {
+                        return context.showSuccessSnackBar(
+                            "Attendence updated succussfully");
+                      }
+                    });
+                  },
+                  child: const Text('Update'),
+                ),
+              ],
+            ),
           ),
         ),
       ),

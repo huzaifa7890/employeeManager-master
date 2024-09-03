@@ -37,6 +37,10 @@ class _AddEmployeeScreenState extends ConsumerState<AddEmployeeScreen> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final pickedImage = ref.watch(imagePickerProvider);
+    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent,
+      statusBarIconBrightness: Brightness.light,
+    ));
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
