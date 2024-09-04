@@ -54,7 +54,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyA5rKzoLUmDiFmFx6t5ywFsi946IQDjYWk',
-    appId: '1:371726783381:android:dd9e87aa00bedd6c511c9c',
+    appId: '1:371726783381:android:562e64c3958fd775511c9c',
     messagingSenderId: '371726783381',
     projectId: 'employeemanager-8c6f9',
     storageBucket: 'employeemanager-8c6f9.appspot.com',
