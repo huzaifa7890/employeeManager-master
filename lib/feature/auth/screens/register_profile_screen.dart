@@ -179,6 +179,7 @@ class _RegisterProfileAccountScreenState
                                                         .notifier)
                                                     .state = mediaUrls;
                                               }
+                                              // ignore: use_build_context_synchronously
                                               Navigator.pop(context);
                                             },
                                             child: Container(
@@ -225,6 +226,7 @@ class _RegisterProfileAccountScreenState
                                                   .read(imagePickerProvider
                                                       .notifier)
                                                   .state = mediaUrls;
+                                              // ignore: use_build_context_synchronously
                                               context.pop();
                                             },
                                             child: Container(

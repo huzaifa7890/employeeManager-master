@@ -1,6 +1,7 @@
 import 'package:employeemanager/core/repository/firestore_repo.dart';
 import 'package:employeemanager/models/employee.dart';
 import 'package:employeemanager/response/firebase_response/firebase_response_model.dart';
+import 'package:flutter/foundation.dart';
 
 class EmployeeFirebaseRepository {
   final FirebaseReference firebaseReference;
@@ -20,7 +21,7 @@ class EmployeeFirebaseRepository {
     try {
       await firebaseReference.employee.doc(employeeid).delete();
     } catch (e) {
-      print(e);
+      debugPrint(e.toString());
     }
   }
 

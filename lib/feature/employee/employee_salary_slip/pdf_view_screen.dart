@@ -8,20 +8,18 @@ import 'package:employeemanager/theme/app_colors.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
-import 'package:printing/printing.dart';
 import 'package:share_plus/share_plus.dart';
 import 'dart:io';
-import 'dart:typed_data';
 
 class PdfViewScreen extends ConsumerStatefulWidget {
   final Employee employee;
   final DateTimeRange selectedDateRange;
 
   const PdfViewScreen({
-    Key? key,
+    super.key,
     required this.employee,
     required this.selectedDateRange,
-  }) : super(key: key);
+  });
 
   @override
   ConsumerState<PdfViewScreen> createState() => _PdfViewScreenState();
@@ -78,7 +76,7 @@ class _PdfViewScreenState extends ConsumerState<PdfViewScreen> {
         appBar: AppBar(
           actions: [
             IconButton(
-              icon: Icon(Icons.share),
+              icon: const Icon(Icons.share),
               onPressed: () async {
                 // Generate the PDF
                 final pdfData = await _generatePdf(
@@ -428,13 +426,13 @@ class _PdfViewScreenState extends ConsumerState<PdfViewScreen> {
                       pw.SizedBox(height: 10),
                       pw.Text(
                         'Employee: ${employee.name}',
-                        style:
-                            pw.TextStyle(fontSize: 18, color: PdfColors.black),
+                        style: const pw.TextStyle(
+                            fontSize: 18, color: PdfColors.black),
                       ),
                       pw.Text(
                         'Employee ID: ${employee.cnicId}',
-                        style:
-                            pw.TextStyle(fontSize: 16, color: PdfColors.black),
+                        style: const pw.TextStyle(
+                            fontSize: 16, color: PdfColors.black),
                       ),
                     ],
                   ),
@@ -454,8 +452,8 @@ class _PdfViewScreenState extends ConsumerState<PdfViewScreen> {
                   ],
                   ...employee.employeeAttendence.map((attendance) {
                     final netPay = attendance.totalPayment +
-                        (attendance.bonus ?? 0) -
-                        (attendance.taxDebit ?? 0);
+                        (attendance.bonus) -
+                        (attendance.taxDebit);
                     return [
                       attendance.dateTime,
                       attendance.status.name,
@@ -464,13 +462,13 @@ class _PdfViewScreenState extends ConsumerState<PdfViewScreen> {
                       attendance.bonus.toString(),
                       netPay.toString()
                     ];
-                  }).toList()
+                  })
                 ],
               ),
               pw.SizedBox(height: 20),
               pw.Text(
                 'Total Payment: ${employee.employeeAttendence.fold(0.0, (sum, attendance) => sum + attendance.totalPayment)}',
-                style: pw.TextStyle(fontSize: 18, color: PdfColors.black),
+                style: const pw.TextStyle(fontSize: 18, color: PdfColors.black),
               ),
             ],
           );

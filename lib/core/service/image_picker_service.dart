@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter_image_compress/flutter_image_compress.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
@@ -11,7 +12,7 @@ class ImagePickerService {
     try {
       image = await ImagePicker().pickImage(source: e);
     } catch (e) {
-      print(e);
+      debugPrint(e.toString());
     }
 
     if (image != null) {
