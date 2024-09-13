@@ -35,6 +35,15 @@ class AuthNotifier extends Notifier<AuthState> {
     }
   }
 
+  Future<void> deleteUser() async {
+    final userId = ref.read(userProvider)?.id;
+    try {
+      await firebaseReference.users.doc(userId).delete();
+    } catch (e) {
+      rethrow;
+    }
+  }
+
   Future<void> signOut() async {
     authRepo.signOutUser();
 

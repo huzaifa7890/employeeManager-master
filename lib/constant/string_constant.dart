@@ -6,6 +6,9 @@ class AssetImages {
   static const String employeeListImage = 'assets/images/list.png';
   static const String salaryslip = 'assets/images/salaryslip.png';
   static const String multipleAttendence = 'assets/images/multiple.png';
+  static const String profileIcon = 'assets/icons/profile_icon.png';
+  static const String logoutIcon = 'assets/icons/logout_icon.png';
+  static const String delete = 'assets/icons/Delete.png';
 }
 
 class AppRoutes {
@@ -16,4 +19,6 @@ class AppRoutes {
   static const String registerAccountScreen = "/register-account";
   static const String forgotPasswordScreen = "/forgot-password";
   static const String homeScreen = "/home";
+  static const String settingScreen = "/settingScreen";
+  static const String profileScreen = "/profileScreen";
 }

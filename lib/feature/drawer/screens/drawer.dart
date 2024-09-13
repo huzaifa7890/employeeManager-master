@@ -1,5 +1,4 @@
 import 'package:employeemanager/constant/string_constant.dart';
-import 'package:employeemanager/feature/auth/providers/auth_provider.dart';
 import 'package:employeemanager/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -25,32 +24,16 @@ class AppDrawer extends ConsumerWidget {
               leading: const Icon(Icons.shop),
               title: const Text('HomePage'),
               onTap: () {
-                context.pushReplacementNamed('/');
+                context.pushReplacement(AppRoutes.homeScreen);
               },
             ),
-            // const Divider(),
-            // ListTile(
-            //   leading: const Icon(Icons.payment),
-            //   title: const Text('Orders'),
-            //   onTap: () {
-            //     // Navigator.of(context).pushReplacementNamed(OrderScreen.routeName);
-            //   },
-            // ),
-            // const Divider(),
-            // ListTile(
-            //   leading: const Icon(Icons.edit),
-            //   title: const Text('Manage Products'),
-            //   onTap: () {
-            //     // Navigator.of(context).pushReplacementNamed(UserProduct.routeName);
-            //   },
-            // ),
             const Divider(),
             ListTile(
-              leading: const Icon(Icons.exit_to_app),
-              title: const Text('Logout'),
+              leading: const Icon(Icons.settings),
+              title: const Text('Setting'),
               onTap: () {
-                ref.read(authProvider.notifier).signOut();
-                context.pushReplacement(AppRoutes.mainScreen);
+                // ref.read(authProvider.notifier).signOut();
+                context.push(AppRoutes.settingScreen);
               },
             ),
           ],

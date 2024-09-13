@@ -1,3 +1,5 @@
+import 'package:employeemanager/constant/string_constant.dart';
+import 'package:employeemanager/feature/home/setting_screen.dart';
 import 'package:employeemanager/models/employee.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -131,5 +133,37 @@ String getEmployeeAttendenceStatus(
       return 'Double';
     case EmployeeAttendenceStatus.overtime:
       return 'OverTime';
+  }
+}
+
+String getProfileSettingsTitle(Profilelist profilelist) {
+  switch (profilelist) {
+    case Profilelist.viewprofile:
+      return 'View Profile';
+    // case Profilelist.notification:
+    //   return 'Notification';
+
+    case Profilelist.logout:
+      return 'Log out';
+
+    case Profilelist.deleteUser:
+      return 'Delete User';
+  }
+}
+
+String getProfileSettingsIcons(Profilelist profilelist) {
+  switch (profilelist) {
+    case Profilelist.viewprofile:
+      return AssetImages.profileIcon;
+    // case Profilelist.notification:
+    //   return AssetImages.notificationIcon;
+    // case Aboutlist.privacy:
+    //   return AssetImages.privacyIcon;
+    // case Profilelist.leads:
+    //   return AssetImages.leadsIcon;
+    case Profilelist.logout:
+      return AssetImages.logoutIcon;
+    case Profilelist.deleteUser:
+      return AssetImages.delete;
   }
 }
