@@ -35,6 +35,7 @@ class AppTheme {
       //   backgroundColor: AppColors.primary,
       //   todayBackgroundColor: MaterialStatePropertyAll(AppColors.secondary),
       // ),
+      fontFamily: GoogleFonts.poppins().fontFamily,
       colorScheme: AppColorSchemes.lightColorScheme,
       textSelectionTheme:
           const TextSelectionThemeData(cursorColor: AppColors.secondary),
