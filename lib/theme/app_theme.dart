@@ -97,49 +97,49 @@ class AppTheme {
 class AppTextTheme {
   static TextTheme textTheme(ColorScheme colorScheme) => TextTheme(
         /// Use this for titles like in app bars etc
-        displayLarge: GoogleFonts.raleway(
+        displayLarge: GoogleFonts.poppins(
           color: colorScheme.inverseSurface,
           fontSize: 25,
           fontWeight: FontWeight.w500,
         ),
 
         /// Use this for attribute title or sub headings
-        titleLarge: GoogleFonts.raleway(
+        titleLarge: GoogleFonts.poppins(
           color: colorScheme.inverseSurface,
           fontSize: 18,
           fontWeight: FontWeight.w500,
         ),
 
         /// Use this for when to bold any kind of attributes in a card or UI widget
-        bodyLarge: GoogleFonts.raleway(
+        bodyLarge: GoogleFonts.poppins(
           color: colorScheme.inverseSurface,
           fontSize: 14,
           fontWeight: FontWeight.w600,
         ),
 
         /// Use this for any kind of attributes in a card or UI widget
-        bodyMedium: GoogleFonts.raleway(
+        bodyMedium: GoogleFonts.poppins(
           color: colorScheme.inverseSurface,
           fontSize: 14,
           fontWeight: FontWeight.w400,
         ),
 
         /// Used for bold headings of textfields and other widgets
-        titleMedium: GoogleFonts.raleway(
+        titleMedium: GoogleFonts.poppins(
           color: colorScheme.inverseSurface,
           fontSize: 16,
           fontWeight: FontWeight.w600,
         ),
 
         /// Used for non bold/regular headings of textfields and other widgets
-        titleSmall: GoogleFonts.raleway(
+        titleSmall: GoogleFonts.poppins(
           color: colorScheme.inverseSurface,
           fontSize: 16,
           fontWeight: FontWeight.w400,
         ),
 
         /// Use this for any kind of attributes in a card or UI widget
-        bodySmall: GoogleFonts.raleway(
+        bodySmall: GoogleFonts.poppins(
           fontWeight: FontWeight.w400,
           color: colorScheme.inverseSurface,
           fontSize: 12,
