@@ -5,6 +5,7 @@ import 'package:employeemanager/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 class EmployeeList extends ConsumerStatefulWidget {
   const EmployeeList({super.key});
@@ -124,9 +125,42 @@ class _EmployeeListState extends ConsumerState<EmployeeList> {
                           IconButton(
                             icon: const Icon(Icons.delete, color: Colors.red),
                             onPressed: () {
-                              ref
-                                  .read(addEmployeeProvider.notifier)
-                                  .deleteEmployee(employee.id);
+                              showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return AlertDialog(
+                                    backgroundColor: AppColors.primary,
+                                    title: Text(
+                                      "Delete Employee",
+                                      style: context.theme.textTheme.bodyLarge,
+                                    ),
+                                    content: const Text(
+                                        "Are you sure you want to delete Employee? This action cannot be undone."),
+                                    actions: <Widget>[
+                                      TextButton(
+                                        onPressed: () {
+                                          Navigator.of(context)
+                                              .pop(); // Close the dialog
+                                        },
+                                        child: const Text("Cancel"),
+                                      ),
+                                      TextButton(
+                                        onPressed: () {
+                                          ref
+                                              .read(
+                                                  addEmployeeProvider.notifier)
+                                              .deleteEmployee(employee.id);
+
+                                          Future.delayed(Duration.zero, () {
+                                            context.pop();
+                                          });
+                                        },
+                                        child: const Text("Delete"),
+                                      ),
+                                    ],
+                                  );
+                                },
+                              );
                             },
                           ),
                         ],
