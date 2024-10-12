@@ -40,6 +40,7 @@ dependencies:
   pdf: ^3.10.6
   printing: ^5.12.0
   share_plus: ^6.3.0
+  flutter_launcher_icons: ^0.14.1
 
 dev_dependencies:
   flutter_test:
@@ -49,7 +50,12 @@ dev_dependencies:
   json_serializable: ^6.7.1 # dart run build_runner build --delete-conflicting-outputs
 
   flutter_lints: ^3.0.0
-
+flutter_icons:
+  android: true
+  ios: true
+  adaptive_icon_background: "#ffffff"
+  adaptive_icon_foreground: "assets/icons/employee.png"
+  image_path: "assets/icons/employee.png"
 flutter:
 
   uses-material-design: true
