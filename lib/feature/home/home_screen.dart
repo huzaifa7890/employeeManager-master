@@ -331,51 +331,51 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   ],
                 ),
                 const SizedBox(width: 25),
-                Stack(
-                  clipBehavior: Clip.none,
-                  children: [
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.of(context)
-                            .push(MaterialPageRoute(builder: (context) {
-                          return const EmployeeSalarySlipScreen();
-                        }));
-                      },
-                      child: Container(
-                        height: 70,
-                        width: 160,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(12),
-                          color: AppColors.appButtoncolor,
-                        ),
-                        child: Center(
-                          child: Text(
-                            "Salary Slip",
-                            style: theme.textTheme.bodyLarge!
-                                .copyWith(color: AppColors.primary),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Positioned(
-                      left: -20, // Adjust this value to control the overlap
-                      top: 12, // Center the icon vertically
-                      child: Container(
-                        height: 45,
-                        width: 45,
-                        decoration: BoxDecoration(
-                          border: Border.all(width: 2),
-                          color: AppColors.primary,
-                          borderRadius: BorderRadius.circular(50),
-                        ),
-                        child: Image.asset(
-                          AssetImages.salaryslip,
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+                // Stack(
+                //   clipBehavior: Clip.none,
+                //   children: [
+                //     GestureDetector(
+                //       onTap: () {
+                //         Navigator.of(context)
+                //             .push(MaterialPageRoute(builder: (context) {
+                //           return const EmployeeSalarySlipScreen();
+                //         }));
+                //       },
+                //       child: Container(
+                //         height: 70,
+                //         width: 160,
+                //         decoration: BoxDecoration(
+                //           borderRadius: BorderRadius.circular(12),
+                //           color: AppColors.appButtoncolor,
+                //         ),
+                //         child: Center(
+                //           child: Text(
+                //             "Salary Slip",
+                //             style: theme.textTheme.bodyLarge!
+                //                 .copyWith(color: AppColors.primary),
+                //           ),
+                //         ),
+                //       ),
+                //     ),
+                //     Positioned(
+                //       left: -20, // Adjust this value to control the overlap
+                //       top: 12, // Center the icon vertically
+                //       child: Container(
+                //         height: 45,
+                //         width: 45,
+                //         decoration: BoxDecoration(
+                //           border: Border.all(width: 2),
+                //           color: AppColors.primary,
+                //           borderRadius: BorderRadius.circular(50),
+                //         ),
+                //         child: Image.asset(
+                //           AssetImages.salaryslip,
+                //           fit: BoxFit.cover,
+                //         ),
+                //       ),
+                //     ),
+                //   ],
+                // ),
               ],
             ),
             const SizedBox(height: 20),
