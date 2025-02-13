@@ -4,8 +4,10 @@ import 'package:employeemanager/feature/auth/screens/login_screen.dart';
 import 'package:employeemanager/feature/auth/screens/register_account_screen.dart';
 import 'package:employeemanager/feature/auth/screens/register_profile_screen.dart';
 import 'package:employeemanager/feature/home/home_screen.dart';
+import 'package:employeemanager/feature/home/privacy_policy.dart';
 import 'package:employeemanager/feature/home/profile_screen.dart';
 import 'package:employeemanager/feature/home/setting_screen.dart';
+import 'package:employeemanager/feature/home/term_condition.dart';
 import 'package:employeemanager/feature/splash/splash_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:go_router/go_router.dart';
@@ -48,6 +50,14 @@ class AppRouter {
         GoRoute(
           path: AppRoutes.settingScreen,
           builder: ((context, state) => const MobileSettingScreen()),
+        ),
+        GoRoute(
+          path: AppRoutes.termConditionPage,
+          builder: ((context, state) => const MobileTermConditionScreen()),
+        ),
+        GoRoute(
+          path: AppRoutes.privacyPolicyPage,
+          builder: ((context, state) => const PrivacyPolicyPage()),
         ),
         GoRoute(
           path: AppRoutes.profileScreen,

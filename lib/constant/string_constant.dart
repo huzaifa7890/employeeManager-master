@@ -20,5 +20,7 @@ class AppRoutes {
   static const String forgotPasswordScreen = "/forgot-password";
   static const String homeScreen = "/home";
   static const String settingScreen = "/settingScreen";
+  static const String privacyPolicyPage = "/privacyPolicyPage";
+  static const String termConditionPage = "/termConditionPage";
   static const String profileScreen = "/profileScreen";
 }

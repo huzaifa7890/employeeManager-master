@@ -140,6 +140,10 @@ String getProfileSettingsTitle(Profilelist profilelist) {
   switch (profilelist) {
     case Profilelist.viewprofile:
       return 'View Profile';
+    case Profilelist.termcondition:
+      return 'Term and Condition';
+    case Profilelist.privacypolicy:
+      return 'Privacy Policy';
     // case Profilelist.notification:
     //   return 'Notification';
 
@@ -163,6 +167,10 @@ String getProfileSettingsIcons(Profilelist profilelist) {
     //   return AssetImages.leadsIcon;
     case Profilelist.logout:
       return AssetImages.logoutIcon;
+    case Profilelist.termcondition:
+      return AssetImages.profileIcon;
+    case Profilelist.privacypolicy:
+      return AssetImages.personIcon;
     case Profilelist.deleteUser:
       return AssetImages.delete;
   }
