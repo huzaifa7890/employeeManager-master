@@ -6,6 +6,11 @@ plugins {
 
 def localProperties = new Properties()
 def localPropertiesFile = rootProject.file('local.properties')
+def keystorePropertiesFile = rootProject.file("key.properties")
+def keystoreProperties = new Properties()
+keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+
+
 if (localPropertiesFile.exists()) {
     localPropertiesFile.withReader('UTF-8') { reader ->
         localProperties.load(reader)
@@ -53,12 +58,10 @@ android {
     }
     signingConfigs {
     release {
-        // keyAlias 'upload'
-        // keyPassword 'huzaifa'
-        // storeFile file('C:\\Users\\Huzaifa Abubakr\\upload-keystore.jks') // Escaped backslashes
-        // // OR use forward slashes:
-        // // storeFile file('C:/Users/Huzaifa Abubakr/upload-keystore.jks')
-        // storePassword 'huzaifa'
+        keyAlias keystoreProperties['keyAlias']
+        keyPassword keystoreProperties['keyPassword']
+        storeFile file(keystoreProperties['storeFile'])
+        storePassword keystoreProperties['storePassword']
     }
 }
     buildTypes {
