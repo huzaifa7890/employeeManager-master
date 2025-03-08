@@ -3,6 +3,7 @@ import 'package:employeemanager/constant/string_constant.dart';
 import 'package:employeemanager/constant/ui_constant.dart';
 import 'package:employeemanager/feature/auth/providers/auth_provider.dart';
 import 'package:employeemanager/theme/app_colors.dart';
+import 'package:employeemanager/widgets/app_logo_button_widget.dart';
 import 'package:employeemanager/widgets/app_text_field.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -24,6 +25,20 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
   TextEditingController passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    ref.listen<AuthState>(authProvider.select((value) => value), (prev, next) {
+      if (next.navigateToHome) {
+        context.pop();
+        context.push(AppRoutes.mainScreen);
+      }
+      if (next.navigateToRegisterScreen) {
+        final extraData = {
+          'fromPhoneLogin': false,
+          'isGoogleLogin': next.googleLogin,
+        };
+        context.pop();
+        context.push(AppRoutes.registerProfileScreen, extra: extraData);
+      }
+    });
     final theme = Theme.of(context);
     final showPassword = ref.watch(showPasswordProvider);
     return Scaffold(
@@ -153,6 +168,32 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                   // style: theme.textTheme.bodyLarge!
                   //     .copyWith(color: AppColors.primary),
                 ),
+              ),
+              const SizedBox(
+                height: 42,
+              ),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  AppLogoButton(
+                    imagePath: AssetImages.googleLogo,
+                    onPressed: () {
+                      showLoaderDialog(
+                        context,
+                        true,
+                        theme: theme,
+                      );
+                      final response =
+                          ref.read(authProvider.notifier).loginWithGoogle();
+                      response.then((response) {
+                        if (response.errorMessage.isNotEmpty) {
+                          return context.showSnackBar(response.errorMessage);
+                        }
+                      });
+                    },
+                  ),
+                ],
               ),
               const SizedBox(
                 height: 42,

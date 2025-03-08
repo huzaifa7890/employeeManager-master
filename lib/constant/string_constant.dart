@@ -9,6 +9,7 @@ class AssetImages {
   static const String profileIcon = 'assets/icons/profile_icon.png';
   static const String logoutIcon = 'assets/icons/logout_icon.png';
   static const String delete = 'assets/icons/Delete.png';
+  static const String googleLogo = 'assets/icons/google.png';
 }
 
 class AppRoutes {

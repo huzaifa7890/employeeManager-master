@@ -6,12 +6,16 @@ class AuthState extends Equatable {
   final bool isLoading;
   final String? errorMessage;
   final bool navigateToHome;
+  final bool navigateToRegisterScreen;
+  final bool googleLogin;
 
   const AuthState({
     this.user,
     this.isLoading = false,
     this.errorMessage,
     required this.navigateToHome,
+    required this.navigateToRegisterScreen,
+    required this.googleLogin,
   });
 
   bool get isAuthenticated => user != null;
@@ -21,12 +25,17 @@ class AuthState extends Equatable {
     bool? isLoading,
     String? errorMessage,
     bool? navigateToHome,
+    bool? navigateToRegisterScreen,
+    bool? googleLogin,
   }) {
     return AuthState(
       user: user ?? this.user,
       isLoading: isLoading ?? this.isLoading,
       errorMessage: errorMessage ?? this.errorMessage,
       navigateToHome: navigateToHome ?? this.navigateToHome,
+      navigateToRegisterScreen:
+          navigateToRegisterScreen ?? this.navigateToRegisterScreen,
+      googleLogin: googleLogin ?? this.googleLogin,
     );
   }
 
@@ -35,5 +44,7 @@ class AuthState extends Equatable {
   factory AuthState.initial() => const AuthState(
         isLoading: false,
         navigateToHome: false,
+        navigateToRegisterScreen: false,
+        googleLogin: false,
       );
 }

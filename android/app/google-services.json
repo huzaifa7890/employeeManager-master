@@ -7,31 +7,25 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:371726783381:android:7ad73fbfffbb224b511c9c",
-        "android_client_info": {
-          "package_name": "com.employeemanager"
-        }
-      },
-      "oauth_client": [],
-      "api_key": [
-        {
-          "current_key": "AIzaSyA5rKzoLUmDiFmFx6t5ywFsi946IQDjYWk"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": []
-        }
-      }
-    },
-    {
-      "client_info": {
         "mobilesdk_app_id": "1:371726783381:android:562e64c3958fd775511c9c",
         "android_client_info": {
           "package_name": "com.employeemanagerhuz"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "371726783381-sf7cgoe9e3bihqstr4qsvj3qab8k7or2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.employeemanagerhuz",
+            "certificate_hash": "182cafdc9422f1fba6ad77ce52a57104a9e5ea6d"
+          }
+        },
+        {
+          "client_id": "371726783381-ug6760at7e0afu8713f95l62cbojusgk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyA5rKzoLUmDiFmFx6t5ywFsi946IQDjYWk"
@@ -39,7 +33,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "371726783381-ug6760at7e0afu8713f95l62cbojusgk.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "371726783381-i6f3l0lf3j126kmktod3u8gski3udl7q.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.employeemanager.RunnerTests"
+              }
+            }
+          ]
         }
       }
     },
@@ -50,7 +56,12 @@
           "package_name": "com.example.employeemanager"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "371726783381-ug6760at7e0afu8713f95l62cbojusgk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyA5rKzoLUmDiFmFx6t5ywFsi946IQDjYWk"
@@ -58,7 +69,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "371726783381-ug6760at7e0afu8713f95l62cbojusgk.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "371726783381-i6f3l0lf3j126kmktod3u8gski3udl7q.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.employeemanager.RunnerTests"
+              }
+            }
+          ]
         }
       }
     }

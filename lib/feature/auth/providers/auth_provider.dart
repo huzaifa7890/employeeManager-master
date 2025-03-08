@@ -5,6 +5,7 @@ import 'package:employeemanager/core/repository/user_firestore_repo.dart';
 import 'package:employeemanager/feature/auth/providers/user_provider.dart';
 import 'package:employeemanager/feature/auth/repository/auth_firebase_repo.dart';
 import 'package:employeemanager/feature/auth/repository/firestorage_repo.dart';
+import 'package:employeemanager/feature/auth/repository/google_firebase_repo.dart';
 import 'package:employeemanager/models/employee_manager_user.dart';
 import 'package:employeemanager/response/firebase_response/firebase_response_model.dart';
 import 'package:employeemanager/response/response.dart';
@@ -15,6 +16,7 @@ part 'auth_state.dart';
 
 class AuthNotifier extends Notifier<AuthState> {
   final FirebaseAuthRepo authRepo;
+  final GoogleFirebaseRepo googleFirebaseRepo;
   final FirebaseReference firebaseReference;
 
   String verificationId = '';
@@ -22,6 +24,7 @@ class AuthNotifier extends Notifier<AuthState> {
   AuthNotifier(
     this.authRepo,
     this.firebaseReference,
+    this.googleFirebaseRepo,
   ) : super();
 
   Future<EmployeeManagerUser?> isFirebaseUser(String userId) async {
@@ -46,9 +49,9 @@ class AuthNotifier extends Notifier<AuthState> {
 
   Future<void> signOut() async {
     authRepo.signOutUser();
-
-    state = AuthState.initial();
+    googleFirebaseRepo.googleLogout();
     ref.read(userProvider.notifier).state = null;
+    state = AuthState.initial();
   }
 
   Future<Response> loginUser(String email, String password) async {
@@ -221,6 +224,57 @@ class AuthNotifier extends Notifier<AuthState> {
     return invesNetworkUser;
   }
 
+  void navigateToHome() {
+    state = state.copyWith(
+      navigateToHome: false,
+      navigateToRegisterScreen: false,
+      googleLogin: false,
+    );
+  }
+
+  Future<Response> loginWithGoogle() async {
+    state = state.copyWith(isLoading: true);
+
+    final userCredential = await googleFirebaseRepo.loginWithGoogle();
+
+    if (userCredential.data != null) {
+      final user = await isFirebaseUser(userCredential.data!.user!.uid);
+      if (user != null) {
+        ref.read(userProvider.notifier).state = user;
+        state = state.copyWith(
+          isLoading: false,
+          user: userCredential.data!.user,
+          errorMessage: null,
+          navigateToHome: true,
+          navigateToRegisterScreen: false,
+          googleLogin: true,
+        );
+        navigateToHome();
+        // NavigationService.navigatorKey.currentContext?.pop();
+        return const Response(isSuccess: true, errorMessage: '');
+      } else {
+        state = state.copyWith(
+          isLoading: false,
+          user: userCredential.data!.user,
+          errorMessage: null,
+          navigateToHome: false,
+          navigateToRegisterScreen: true,
+          googleLogin: true,
+        );
+        navigateToHome();
+        // NavigationService.navigatorKey.currentContext?.pop();
+        return Response(
+            isSuccess: false, errorMessage: userCredential.errorMessage);
+      }
+    } else {
+      state = state.copyWith(
+          isLoading: false, errorMessage: userCredential.errorMessage);
+      NavigationService.navigatorKey.currentState?.pop();
+      return Response(
+          isSuccess: false, errorMessage: userCredential.errorMessage);
+    }
+  }
+
   void saveAuthUser(User? user) async {
     state = state.copyWith(user: user);
   }
@@ -232,5 +286,6 @@ class AuthNotifier extends Notifier<AuthState> {
 }
 
 final authProvider = NotifierProvider<AuthNotifier, AuthState>(
-  () => AuthNotifier(FirebaseAuthRepo(), FirebaseReference()),
+  () => AuthNotifier(
+      FirebaseAuthRepo(), FirebaseReference(), GoogleFirebaseRepo()),
 );

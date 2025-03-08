@@ -7,7 +7,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-enum Profilelist { viewprofile, termcondition, privacypolicy, logout, deleteUser }
+enum Profilelist {
+  viewprofile,
+  termcondition,
+  privacypolicy,
+  logout,
+  deleteUser
+}
 
 class MobileSettingScreen extends ConsumerStatefulWidget {
   const MobileSettingScreen({super.key});
@@ -72,16 +78,13 @@ class _SellerSettingScreenState extends ConsumerState<MobileSettingScreen> {
                             context.push(AppRoutes.profileScreen);
                           } else if (item == Profilelist.logout) {
                             await ref.read(authProvider.notifier).signOut();
-                            context.go(AppRoutes.mainScreen);
-                          } 
-                          else if (item == Profilelist.deleteUser) {
+                            context.go(AppRoutes.loginScreen);
+                          } else if (item == Profilelist.deleteUser) {
                             _showDeleteConfirmationDialog(context);
-                          }
-                          else if (item == Profilelist.privacypolicy) {
-                        context.push(AppRoutes.privacyPolicyPage);
-                          }
-                          else if (item == Profilelist.termcondition) {
-                           context.push(AppRoutes.termConditionPage);
+                          } else if (item == Profilelist.privacypolicy) {
+                            context.push(AppRoutes.privacyPolicyPage);
+                          } else if (item == Profilelist.termcondition) {
+                            context.push(AppRoutes.termConditionPage);
                           }
                         },
                         child: Padding(
