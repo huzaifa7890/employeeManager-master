@@ -8,6 +8,16 @@
             "name": "Dart & Flutter",
             "request": "launch",
             "type": "dart"
-        }
+        },
+          {
+            "name": "release mode",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release",
+            "program": "lib/main.dart",  
+            "args": [
+                "--release"
+            ]
+        },
     ]
 }
