@@ -77,18 +77,14 @@ class _RegisterAccountScreenState extends ConsumerState<RegisterAccountScreen> {
               ),
               RichText(
                 text: TextSpan(
-                  text: 'Register your ',
-                  style: theme.textTheme.displayLarge,
-                  children: [
-                    TextSpan(
-                      text: 'Account 👇',
-                      style: theme.textTheme.displayLarge?.copyWith(
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ],
+                  text: 'Create Account',
+                  style: theme.textTheme.displayLarge?.copyWith(
+                    fontSize: 32,
+                    color: AppColors.primary,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-              ),
+              ).center(),
               const SizedBox(
                 height: 40,
               ),
@@ -96,11 +92,11 @@ class _RegisterAccountScreenState extends ConsumerState<RegisterAccountScreen> {
               AppTextField(
                   height: 65,
                   textController: _emailController,
-                  fillColor: AppColors.fieldGrey,
+                  fillColor: AppColors.textFieldBackground,
                   border: const OutlineInputBorder(
                     borderSide: BorderSide.none,
                     borderRadius: BorderRadius.all(
-                      Radius.circular(25),
+                      Radius.circular(50),
                     ),
                   ),
                   validator: (value) {
@@ -111,22 +107,29 @@ class _RegisterAccountScreenState extends ConsumerState<RegisterAccountScreen> {
                     }
                     return null;
                   },
+                  prefixIcon: const Icon(
+                    Icons.email_outlined,
+                    color: AppColors.primary,
+                  ),
                   hintText: 'Email',
-                  hintStyle: theme.textTheme.bodyMedium!
-                      .copyWith(color: AppColors.fieldTextcolor),
-                  // length: 327,
+                  hintStyle: theme.textTheme.bodyMedium!.copyWith(),
+                  textStyle: theme.textTheme.bodyMedium, // length: 327,
                   lines: 1),
               const SizedBox(height: 30),
               AppTextField(
                   obscureText: true,
                   textController: _passwordController,
                   height: 65,
-                  fillColor: AppColors.fieldGrey,
+                  fillColor: AppColors.textFieldBackground,
                   border: const OutlineInputBorder(
                     borderSide: BorderSide.none,
                     borderRadius: BorderRadius.all(
-                      Radius.circular(25),
+                      Radius.circular(50),
                     ),
+                  ),
+                  prefixIcon: const Icon(
+                    Icons.password_sharp,
+                    color: AppColors.primary,
                   ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
@@ -135,9 +138,8 @@ class _RegisterAccountScreenState extends ConsumerState<RegisterAccountScreen> {
                     return null;
                   },
                   hintText: 'Password',
-                  hintStyle: theme.textTheme.bodyMedium!
-                      .copyWith(color: AppColors.fieldTextcolor),
-                  // length: 327,
+                  hintStyle: theme.textTheme.bodyMedium!.copyWith(),
+                  textStyle: theme.textTheme.bodyMedium, // length: 327,
                   lines: 1),
               const SizedBox(
                 height: 30,
@@ -152,17 +154,20 @@ class _RegisterAccountScreenState extends ConsumerState<RegisterAccountScreen> {
                     }
                     return null;
                   },
-                  fillColor: AppColors.fieldGrey,
+                  fillColor: AppColors.textFieldBackground,
                   border: const OutlineInputBorder(
                     borderSide: BorderSide.none,
                     borderRadius: BorderRadius.all(
-                      Radius.circular(25),
+                      Radius.circular(50),
                     ),
                   ),
+                  prefixIcon: const Icon(
+                    Icons.password_sharp,
+                    color: AppColors.primary,
+                  ),
                   hintText: 'Confirm Password',
-                  hintStyle: theme.textTheme.bodyMedium!
-                      .copyWith(color: AppColors.fieldTextcolor),
-                  // length: 327,
+                  hintStyle: theme.textTheme.bodyMedium!.copyWith(),
+                  textStyle: theme.textTheme.bodyMedium,
                   lines: 1),
               const SizedBox(
                 height: 96,
@@ -172,8 +177,6 @@ class _RegisterAccountScreenState extends ConsumerState<RegisterAccountScreen> {
                   if (_formKey.currentState!.validate()) {
                     showLoaderDialog(
                       context,
-                      true,
-                      theme: theme,
                     );
 
                     ref.read(authProvider.notifier).savingEmployeeUserAndImage(
@@ -193,7 +196,12 @@ class _RegisterAccountScreenState extends ConsumerState<RegisterAccountScreen> {
                     });
                   }
                 },
-                child: const Text('Register'),
+                child: Text(
+                  'Register',
+                  style: theme.textTheme.bodyLarge?.copyWith(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
               ),
               const SizedBox(
                 height: 85,

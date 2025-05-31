@@ -44,7 +44,7 @@ class _PhoneNumberWidgetState extends State<PhoneNumberWidget> {
       children: [
         Container(
           decoration: const BoxDecoration(
-            color: AppColors.fieldGrey,
+            color: AppColors.secondary,
             borderRadius: BorderRadius.all(
               Radius.circular(25),
             ),
@@ -56,7 +56,7 @@ class _PhoneNumberWidgetState extends State<PhoneNumberWidget> {
             children: [
               CountryCodePicker(
                 padding: EdgeInsets.zero,
-                dialogBackgroundColor: AppColors.fieldGrey,
+                dialogBackgroundColor: AppColors.secondary,
                 textStyle: theme.textTheme.bodyMedium,
                 dialogTextStyle: theme.textTheme.bodyMedium,
                 searchStyle: theme.textTheme.bodyMedium,
@@ -64,7 +64,7 @@ class _PhoneNumberWidgetState extends State<PhoneNumberWidget> {
                   hintText: 'Search',
                   hintStyle: theme.textTheme.bodyMedium,
                   focusedBorder: const UnderlineInputBorder(
-                    borderSide: BorderSide(color: AppColors.appThemeColor),
+                    borderSide: BorderSide(color: AppColors.secondary),
                   ),
                 ),
                 builder: (countryCode) {
@@ -133,8 +133,7 @@ class _PhoneNumberWidgetState extends State<PhoneNumberWidget> {
                             Radius.circular(25),
                           ),
                         ),
-                        hintStyle: theme.textTheme.bodyMedium!
-                            .copyWith(color: AppColors.fieldTextcolor),
+                        hintStyle: theme.textTheme.bodyMedium!.copyWith(),
                         lines: 1,
                         inputFormatters: [
                           selectedCountry != null
@@ -142,7 +141,7 @@ class _PhoneNumberWidgetState extends State<PhoneNumberWidget> {
                                   country: selectedCountry!)
                               : FilteringTextInputFormatter.digitsOnly,
                         ],
-                        fillColor: AppColors.fieldGrey,
+                        fillColor: AppColors.secondary,
                         hintText: "Enter Your Phone Number",
                         textInputAction: TextInputAction.done,
                         keyboardType: TextInputType.number,

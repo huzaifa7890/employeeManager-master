@@ -1,4 +1,5 @@
 import 'package:employeemanager/constant/string_constant.dart';
+import 'package:employeemanager/constant/ui_constant.dart';
 import 'package:employeemanager/feature/auth/providers/auth_provider.dart';
 import 'package:employeemanager/feature/drawer/screens/drawer.dart';
 import 'package:employeemanager/feature/employee/add_employee/screen/add_employee_screen.dart';
@@ -25,7 +26,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   void initState() {
     super.initState();
     final auth = FirebaseAuth.instance;
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
       if (auth.currentUser != null) {
         ref
             .read(authProvider.notifier)
@@ -37,360 +38,321 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-      statusBarColor: Colors.transparent,
-      statusBarIconBrightness: Brightness.light,
-    ));
-
     final theme = Theme.of(context);
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          centerTitle: true,
-          backgroundColor: AppColors.secondary,
-          iconTheme: const IconThemeData(color: AppColors.primary),
-          title: Text(
-            "Employee Manager",
-            style: theme.textTheme.titleLarge!.copyWith(
-              color: AppColors.primary,
-              fontWeight: FontWeight.w700,
-            ),
+
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        backgroundColor: AppColors.secondary,
+        iconTheme: const IconThemeData(color: AppColors.primary),
+        title: Text(
+          "Employee Manager",
+          style: theme.textTheme.titleLarge!.copyWith(
+            color: AppColors.primary,
+            fontWeight: FontWeight.w700,
           ),
         ),
-        drawer: const AppDrawer(),
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
+      ),
+      drawer: const AppDrawer(),
+      body: Center(
+        child: Wrap(
+          alignment: WrapAlignment.center,
+          spacing: 20,
+          runSpacing: 25,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Stack(
-                  clipBehavior: Clip.none,
-                  children: [
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (context) => const AddEmployeeScreen(),
-                          ),
-                        );
-                      },
-                      child: Container(
-                        height: 70,
-                        width: 160,
+            // Add Employee
+            SizedBox(
+              height: 140,
+              width: 140,
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (_) => const AddEmployeeScreen()));
+                },
+                child: Container(
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.grey.shade400),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        height: 50,
+                        width: 50,
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(12),
-                          color: AppColors.appButtoncolor,
-                        ),
-                        child: Center(
-                          child: Text(
-                            "Add Employee",
-                            style: theme.textTheme.bodyLarge!.copyWith(
-                              color: AppColors.primary,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Positioned(
-                      left: -22, // Adjust this value to control the overlap
-                      top: 12, // Center the icon vertically
-                      child: Container(
-                        height: 45,
-                        width: 45,
-                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
                           border: Border.all(width: 2),
-                          color: AppColors.primary,
-                          borderRadius: BorderRadius.circular(50),
                         ),
-                        child: Image.asset(
-                          AssetImages.addEmployeeImage,
-                          fit: BoxFit.cover,
-                          height: 30,
-                          width: 30,
+                        child: Center(
+                          child: Image.asset(
+                            AssetImages.addEmployeeImage,
+                            height: 25,
+                            width: 25,
+                            fit: BoxFit.contain,
+                          ),
                         ),
                       ),
-                    ),
-                  ],
-                ),
-                const SizedBox(width: 25),
-                Stack(
-                  clipBehavior: Clip.none,
-                  children: [
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.of(context)
-                            .push(MaterialPageRoute(builder: (context) {
-                          return const EmployeeList();
-                        }));
-                      },
-                      child: Container(
-                        height: 70,
-                        width: 160,
+                      const Spacer(),
+                      Container(
+                        width: double.infinity,
                         decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(12),
-                            color: AppColors.appButtoncolor),
-                        child: Center(
-                            child: Text(
-                          "List",
-                          style: theme.textTheme.bodyLarge!
+                          color: AppColors.tertiary,
+                          borderRadius: const BorderRadius.only(
+                            bottomLeft: Radius.circular(12),
+                            bottomRight: Radius.circular(12),
+                          ),
+                        ),
+                        padding: const EdgeInsets.symmetric(vertical: 8),
+                        child: Text(
+                          'Add Employee',
+                          textAlign: TextAlign.center,
+                          style: theme.textTheme.bodySmall!
                               .copyWith(color: AppColors.primary),
-                        )),
-                      ),
-                    ),
-                    Positioned(
-                      left: -20, // Adjust this value to control the overlap
-                      top: 12, // Center the icon vertically
-                      child: Container(
-                        height: 45,
-                        width: 45,
-                        decoration: BoxDecoration(
-                          border: Border.all(width: 2),
-                          color: AppColors.primary,
-                          borderRadius: BorderRadius.circular(50),
                         ),
-                        child: ClipOval(
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+
+            // Repeat this block for each button, just change label + icon + screen
+
+            SizedBox(
+              height: 140,
+              width: 140,
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (_) => const EmployeeList()));
+                },
+                child: Container(
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.grey.shade400),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        height: 50,
+                        width: 50,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          border: Border.all(width: 2),
+                        ),
+                        child: Center(
                           child: Image.asset(
                             AssetImages.employeeListImage,
-                            fit: BoxFit.cover,
+                            height: 25,
+                            width: 25,
+                            fit: BoxFit.contain,
                           ),
                         ),
                       ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-            const SizedBox(height: 40),
-
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Stack(
-                  clipBehavior: Clip.none,
-                  children: [
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.of(context)
-                            .push(MaterialPageRoute(builder: (context) {
-                          return const EmployeeAttendenceScreen();
-                        }));
-                      },
-                      child: Container(
-                        height: 70,
-                        width: 160,
+                      const Spacer(),
+                      Container(
+                        width: double.infinity,
                         decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(12),
-                            color: AppColors.appButtoncolor),
-                        child: Center(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                "Mark",
-                                style: theme.textTheme.bodyLarge!
-                                    .copyWith(color: AppColors.primary),
-                                textAlign: TextAlign.center,
-                              ),
-                              Text(
-                                "Attendance",
-                                style: theme.textTheme.bodyLarge!
-                                    .copyWith(color: AppColors.primary),
-                                textAlign: TextAlign.center,
-                              ),
-                            ],
+                          color: AppColors.tertiary,
+                          borderRadius: const BorderRadius.only(
+                            bottomLeft: Radius.circular(12),
+                            bottomRight: Radius.circular(12),
                           ),
                         ),
-                      ),
-                    ),
-                    Positioned(
-                      left: -20, // Adjust this value to control the overlap
-                      top: 12, // Center the icon vertically
-                      child: Container(
-                        height: 45,
-                        width: 45,
-                        decoration: BoxDecoration(
-                          border: Border.all(width: 2),
-                          color: AppColors.primary,
-                          borderRadius: BorderRadius.circular(50),
-                        ),
-                        child: Image.asset(
-                          AssetImages.markEmployeeImage,
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(width: 25),
-                Stack(
-                  clipBehavior: Clip.none,
-                  children: [
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.of(context)
-                            .push(MaterialPageRoute(builder: (context) {
-                          return const EmployeeSalarySlipScreen();
-                        }));
-                      },
-                      child: Container(
-                        height: 70,
-                        width: 160,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(12),
-                            color: AppColors.appButtoncolor),
-                        child: Center(
-                            child: Text(
-                          "Salary Slip",
-                          style: theme.textTheme.bodyLarge!
+                        padding: const EdgeInsets.symmetric(vertical: 8),
+                        child: Text(
+                          'Add List',
+                          textAlign: TextAlign.center,
+                          style: theme.textTheme.bodySmall!
                               .copyWith(color: AppColors.primary),
-                        )),
-                      ),
-                    ),
-                    Positioned(
-                      left: -20, // Adjust this value to control the overlap
-                      top: 12, // Center the icon vertically
-                      child: Container(
-                        height: 45,
-                        width: 45,
-                        decoration: BoxDecoration(
-                          border: Border.all(width: 2),
-                          color: AppColors.primary,
-                          borderRadius: BorderRadius.circular(50),
-                        ),
-                        child: Image.asset(
-                          AssetImages.salaryslip,
-                          fit: BoxFit.cover,
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ],
+              ),
             ),
-            const SizedBox(height: 40),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Stack(
-                  clipBehavior: Clip.none,
-                  children: [
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.of(context)
-                            .push(MaterialPageRoute(builder: (context) {
-                          return const MultipleAttendence();
-                        }));
-                      },
-                      child: Container(
-                        height: 70,
-                        width: 160,
+
+            // Salary Slip
+            SizedBox(
+              height: 140,
+              width: 140,
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (_) => const EmployeeSalarySlipScreen()));
+                },
+                child: Container(
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.grey.shade400),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        height: 50,
+                        width: 50,
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(12),
-                          color: AppColors.appButtoncolor,
+                          shape: BoxShape.circle,
+                          border: Border.all(width: 2),
                         ),
                         child: Center(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                "Multiple",
-                                style: theme.textTheme.bodyLarge!
-                                    .copyWith(color: AppColors.primary),
-                                textAlign: TextAlign.center,
-                              ),
-                              Text(
-                                "Attendance",
-                                style: theme.textTheme.bodyLarge!
-                                    .copyWith(color: AppColors.primary),
-                                textAlign: TextAlign.center,
-                              ),
-                            ],
+                          child: Image.asset(
+                            AssetImages.salaryslip,
+                            height: 25,
+                            width: 25,
+                            fit: BoxFit.contain,
                           ),
                         ),
                       ),
-                    ),
-                    Positioned(
-                      left: -20, // Adjust this value to control the overlap
-                      top: 12, // Center the icon vertically
-                      child: Container(
-                        height: 45,
-                        width: 45,
+                      const Spacer(),
+                      Container(
+                        width: double.infinity,
                         decoration: BoxDecoration(
-                          border: Border.all(width: 2),
-                          color: AppColors.primary,
-                          borderRadius: BorderRadius.circular(50),
+                          color: AppColors.tertiary,
+                          borderRadius: const BorderRadius.only(
+                            bottomLeft: Radius.circular(12),
+                            bottomRight: Radius.circular(12),
+                          ),
                         ),
-                        child: Image.asset(
-                          AssetImages.multipleAttendence,
-                          fit: BoxFit.cover,
+                        padding: const EdgeInsets.symmetric(vertical: 8),
+                        child: Text(
+                          'Salary Slip',
+                          textAlign: TextAlign.center,
+                          style: theme.textTheme.bodySmall!
+                              .copyWith(color: AppColors.primary),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-                const SizedBox(width: 25),
-                // Stack(
-                //   clipBehavior: Clip.none,
-                //   children: [
-                //     GestureDetector(
-                //       onTap: () {
-                //         Navigator.of(context)
-                //             .push(MaterialPageRoute(builder: (context) {
-                //           return const EmployeeSalarySlipScreen();
-                //         }));
-                //       },
-                //       child: Container(
-                //         height: 70,
-                //         width: 160,
-                //         decoration: BoxDecoration(
-                //           borderRadius: BorderRadius.circular(12),
-                //           color: AppColors.appButtoncolor,
-                //         ),
-                //         child: Center(
-                //           child: Text(
-                //             "Salary Slip",
-                //             style: theme.textTheme.bodyLarge!
-                //                 .copyWith(color: AppColors.primary),
-                //           ),
-                //         ),
-                //       ),
-                //     ),
-                //     Positioned(
-                //       left: -20, // Adjust this value to control the overlap
-                //       top: 12, // Center the icon vertically
-                //       child: Container(
-                //         height: 45,
-                //         width: 45,
-                //         decoration: BoxDecoration(
-                //           border: Border.all(width: 2),
-                //           color: AppColors.primary,
-                //           borderRadius: BorderRadius.circular(50),
-                //         ),
-                //         child: Image.asset(
-                //           AssetImages.salaryslip,
-                //           fit: BoxFit.cover,
-                //         ),
-                //       ),
-                //     ),
-                //   ],
-                // ),
-              ],
+              ),
             ),
-            const SizedBox(height: 20),
-            // ElevatedButton(
-            //   style: const ButtonStyle(
-            //     minimumSize: MaterialStatePropertyAll(
-            //       Size(220, 50),
-            //     ),
-            //   ),
-            //   onPressed: () {
-            //     ref.read(authProvider.notifier).signOut();
-            //     context.pushReplacement(AppRoutes.mainScreen);
-            //   },
-            //   child: const Text('Logout'),
-            // ),
+
+            // Mark Attendance
+            SizedBox(
+              height: 140,
+              width: 140,
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (_) => const EmployeeAttendenceScreen()));
+                },
+                child: Container(
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.grey.shade400),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        height: 50,
+                        width: 50,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          border: Border.all(width: 2),
+                        ),
+                        child: Center(
+                          child: Image.asset(
+                            AssetImages.markEmployeeImage,
+                            height: 25,
+                            width: 25,
+                            fit: BoxFit.contain,
+                          ),
+                        ),
+                      ),
+                      const Spacer(),
+                      Container(
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                          color: AppColors.tertiary,
+                          borderRadius: const BorderRadius.only(
+                            bottomLeft: Radius.circular(12),
+                            bottomRight: Radius.circular(12),
+                          ),
+                        ),
+                        padding: const EdgeInsets.symmetric(vertical: 8),
+                        child: Text(
+                          'Mark Attendance',
+                          textAlign: TextAlign.center,
+                          style: theme.textTheme.bodySmall!
+                              .copyWith(color: AppColors.primary),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+
+            // Multiple Attendance
+            SizedBox(
+              height: 140,
+              width: 140,
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (_) => const MultipleAttendence()));
+                },
+                child: Container(
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.grey.shade400),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        height: 50,
+                        width: 50,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          border: Border.all(width: 2),
+                        ),
+                        child: Center(
+                          child: Image.asset(
+                            AssetImages.multipleAttendence,
+                            height: 25,
+                            width: 25,
+                            fit: BoxFit.contain,
+                          ),
+                        ),
+                      ),
+                      const Spacer(),
+                      Container(
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                          color: AppColors.tertiary,
+                          borderRadius: const BorderRadius.only(
+                            bottomLeft: Radius.circular(12),
+                            bottomRight: Radius.circular(12),
+                          ),
+                        ),
+                        padding: const EdgeInsets.symmetric(vertical: 8),
+                        child: Text(
+                          'Multiple Attendance',
+                          textAlign: TextAlign.center,
+                          style: theme.textTheme.bodySmall!
+                              .copyWith(color: AppColors.primary),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
       ),

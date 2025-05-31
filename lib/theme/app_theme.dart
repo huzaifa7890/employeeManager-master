@@ -5,28 +5,20 @@ import 'package:google_fonts/google_fonts.dart';
 
 class AppColorSchemes {
   static const lightColorScheme = ColorScheme.light(
-      primary: AppColors.primary,
-      inversePrimary: AppColors.secondary,
-      tertiary: AppColors.lightGrey,
-      surface: AppColors.primary,
-      surfaceVariant: AppColors.blackpurple,
-      shadow: AppColors.fieldGrey,
-      outline: AppColors.blue,
-      inverseSurface: AppColors.darkblue,
-      tertiaryContainer: AppColors.darkBlue,
-      onInverseSurface: AppColors.lightpurple,
-      onTertiary: AppColors.darkGrey);
+    primary: AppColors.primary,
+    inversePrimary: AppColors.secondary,
+    tertiary: AppColors.tertiary,
+    surface: AppColors.whiteColors,
+    inverseSurface: AppColors.whiteColors,
+  );
 
   static const darkColorScheme = ColorScheme.dark(
-      primary: AppColors.secondary,
-      inversePrimary: AppColors.primary,
-      tertiary: AppColors.darkGrey,
-      onSurface: AppColors.primary,
-      shadow: AppColors.fieldGrey,
-      outline: AppColors.blue,
-      onInverseSurface: AppColors.darkblue,
-      onSurfaceVariant: AppColors.blackpurple,
-      inverseSurface: AppColors.primary);
+    primary: AppColors.secondary,
+    inversePrimary: AppColors.primary,
+    tertiary: AppColors.tertiary,
+    surface: AppColors.primary,
+    inverseSurface: AppColors.appBackGroundColors,
+  );
 }
 
 class AppTheme {
@@ -35,7 +27,7 @@ class AppTheme {
       //   backgroundColor: AppColors.primary,
       //   todayBackgroundColor: MaterialStatePropertyAll(AppColors.secondary),
       // ),
-      fontFamily: GoogleFonts.poppins().fontFamily,
+      fontFamily: GoogleFonts.dmSans().fontFamily,
       colorScheme: AppColorSchemes.lightColorScheme,
       textSelectionTheme:
           const TextSelectionThemeData(cursorColor: AppColors.secondary),
@@ -49,8 +41,8 @@ class AppTheme {
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
             elevation: 5,
-            shadowColor: AppColors.shadowColor.withOpacity(0.5),
-            backgroundColor: AppColors.appThemeColor,
+            shadowColor: AppColors.secondary.withOpacity(0.5),
+            backgroundColor: AppColors.secondary,
             foregroundColor: AppColors.primary,
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
@@ -60,15 +52,15 @@ class AppTheme {
       ),
       textButtonTheme: TextButtonThemeData(
         style: TextButton.styleFrom(
-          foregroundColor: AppColors.appThemeColor,
+          foregroundColor: AppColors.primary,
           textStyle: const TextStyle(
               fontSize: 12,
               fontWeight: FontWeight.w600,
-              color: AppColors.appThemeColor), // Add your text style here
+              color: AppColors.primary), // Add your text style here
         ),
       ),
       dialogTheme: DialogTheme(
-          backgroundColor: AppColors.appThemeColor.withOpacity(0.5),
+          backgroundColor: AppColors.appBackGroundColors.withOpacity(0.5),
           surfaceTintColor: Colors.transparent));
 
   static final darkTheme = ThemeData(
@@ -77,14 +69,14 @@ class AppTheme {
     appBarTheme: AppBarTheme(
       systemOverlayStyle: SystemUiOverlayStyle.light,
       elevation: 5,
-      shadowColor: AppColors.shadowColor.withOpacity(0.5),
+      shadowColor: AppColors.secondary.withOpacity(0.5),
       backgroundColor: AppColorSchemes.darkColorScheme.primary,
     ),
     textTheme: AppTextTheme.textTheme(AppColorSchemes.darkColorScheme),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
           elevation: 0,
-          backgroundColor: AppColors.appThemeColor,
+          backgroundColor: AppColors.primary,
           foregroundColor: AppColors.primary,
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
@@ -97,49 +89,49 @@ class AppTheme {
 class AppTextTheme {
   static TextTheme textTheme(ColorScheme colorScheme) => TextTheme(
         /// Use this for titles like in app bars etc
-        displayLarge: GoogleFonts.poppins(
-          color: colorScheme.inverseSurface,
+        displayLarge: GoogleFonts.dmSans(
+          color: AppColors.primary,
           fontSize: 25,
           fontWeight: FontWeight.w500,
         ),
 
         /// Use this for attribute title or sub headings
-        titleLarge: GoogleFonts.poppins(
+        titleLarge: GoogleFonts.dmSans(
           color: colorScheme.inverseSurface,
           fontSize: 18,
           fontWeight: FontWeight.w500,
         ),
 
         /// Use this for when to bold any kind of attributes in a card or UI widget
-        bodyLarge: GoogleFonts.poppins(
+        bodyLarge: GoogleFonts.dmSans(
           color: colorScheme.inverseSurface,
-          fontSize: 14,
+          fontSize: 16,
           fontWeight: FontWeight.w600,
         ),
 
         /// Use this for any kind of attributes in a card or UI widget
-        bodyMedium: GoogleFonts.poppins(
-          color: colorScheme.inverseSurface,
+        bodyMedium: GoogleFonts.dmSans(
+          color: AppColors.primary,
           fontSize: 14,
           fontWeight: FontWeight.w400,
         ),
 
         /// Used for bold headings of textfields and other widgets
-        titleMedium: GoogleFonts.poppins(
+        titleMedium: GoogleFonts.dmSans(
           color: colorScheme.inverseSurface,
           fontSize: 16,
           fontWeight: FontWeight.w600,
         ),
 
         /// Used for non bold/regular headings of textfields and other widgets
-        titleSmall: GoogleFonts.poppins(
+        titleSmall: GoogleFonts.dmSans(
           color: colorScheme.inverseSurface,
           fontSize: 16,
           fontWeight: FontWeight.w400,
         ),
 
         /// Use this for any kind of attributes in a card or UI widget
-        bodySmall: GoogleFonts.poppins(
+        bodySmall: GoogleFonts.dmSans(
           fontWeight: FontWeight.w400,
           color: colorScheme.inverseSurface,
           fontSize: 12,

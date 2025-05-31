@@ -64,7 +64,7 @@ class _MobileBuyerProfileScreenState extends ConsumerState<MobileProfileScreen>
                           width: 100,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(100),
-                              color: AppColors.fieldGrey),
+                              color: AppColors.tertiary),
                           child: ClipRRect(
                               borderRadius: BorderRadius.circular(100),
                               child: user?.profilePic != null
@@ -135,7 +135,7 @@ class _MobileBuyerProfileScreenState extends ConsumerState<MobileProfileScreen>
                           ),
                           hintText: 'Jonathan Anderson',
                           hintStyle: theme.textTheme.bodyLarge!
-                              .copyWith(color: AppColors.fieldTextcolor),
+                              .copyWith(color: AppColors.tertiary),
                           lines: 1),
                     if (phoneNoController.text.isNotEmpty)
                       const SizedBox(
@@ -171,7 +171,7 @@ class _MobileBuyerProfileScreenState extends ConsumerState<MobileProfileScreen>
                           ),
                           hintText: '+62 112-3288-9111 ',
                           hintStyle: theme.textTheme.displayMedium!.copyWith(
-                              color: AppColors.fieldTextcolor, fontSize: 16),
+                              color: AppColors.tertiary, fontSize: 16),
                           lines: 1),
                     if (emailController.text.isNotEmpty)
                       const SizedBox(
@@ -206,7 +206,7 @@ class _MobileBuyerProfileScreenState extends ConsumerState<MobileProfileScreen>
                           ),
                           hintText: 'jonathan@gmail.com',
                           hintStyle: theme.textTheme.bodyLarge!
-                              .copyWith(color: AppColors.fieldTextcolor),
+                              .copyWith(color: AppColors.tertiary),
                           lines: 1),
                     const SizedBox(
                       height: 30,

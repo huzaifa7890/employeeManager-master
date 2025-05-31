@@ -16,7 +16,7 @@ extension BuildContextHelper on BuildContext {
             fontSize: 16,
           ),
         ),
-        backgroundColor: AppColors.redColor,
+        backgroundColor: AppColors.tertiary,
         duration: const Duration(seconds: 2),
       ),
     );
@@ -39,7 +39,7 @@ extension BuildContextHelper on BuildContext {
             fontSize: 16,
           ),
         ),
-        backgroundColor: AppColors.greenColor,
+        backgroundColor: AppColors.primary,
         duration: const Duration(seconds: 2),
       ),
     );
@@ -63,5 +63,29 @@ extension PaddingModifier on Widget {
   @widgetFactory
   Widget padding(EdgeInsetsGeometry padding) {
     return Padding(padding: padding, child: this);
+  }
+}
+
+extension WidgetsModifier on Widget {
+  @widgetFactory
+  Widget padding(EdgeInsetsGeometry padding) {
+    return Padding(padding: padding, child: this);
+  }
+
+  @widgetFactory
+  Widget addPadding(EdgeInsetsGeometry padding) {
+    return Padding(padding: padding, child: this);
+  }
+
+  @widgetFactory
+  Widget center() {
+    return Center(child: this);
+  }
+
+  @widgetFactory
+  Widget sliverToBoxAdapter() {
+    return SliverToBoxAdapter(
+      child: this,
+    );
   }
 }

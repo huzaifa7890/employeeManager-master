@@ -67,7 +67,7 @@ class _EmployeeAttendenceSheetState
           data: ThemeData.light().copyWith(
             colorScheme: const ColorScheme.light().copyWith(
               primary: AppColors.secondary, // Change primary color as needed
-              secondary: AppColors.amber,
+              secondary: AppColors.tertiary,
             ),
             textTheme: const TextTheme(
               bodyLarge: TextStyle(color: Colors.black), // Customize text color
@@ -120,7 +120,7 @@ class _EmployeeAttendenceSheetState
                       const EdgeInsets.symmetric(vertical: 15.0, horizontal: 8),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
-                    color: AppColors.fieldGrey,
+                    color: AppColors.tertiary,
                   ),
                   child: Column(
                     children: [
@@ -141,7 +141,7 @@ class _EmployeeAttendenceSheetState
                                 child: CircleAvatar(
                                   maxRadius: 60,
                                   minRadius: 60,
-                                  backgroundColor: AppColors.fieldGrey,
+                                  backgroundColor: AppColors.tertiary,
                                   child: widget.employee.employeePic!.isNotEmpty
                                       ? ClipRRect(
                                           borderRadius:
@@ -213,7 +213,7 @@ class _EmployeeAttendenceSheetState
                             vertical: 15.0, horizontal: 8),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
-                          color: AppColors.fieldGrey,
+                          color: AppColors.tertiary,
                         ),
                         child: ListTile(
                           title: Text(
@@ -240,7 +240,7 @@ class _EmployeeAttendenceSheetState
                     width: double.infinity,
                     height: 50,
                     decoration: BoxDecoration(
-                      color: AppColors.purple,
+                      color: AppColors.tertiary,
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: Center(

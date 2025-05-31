@@ -36,9 +36,9 @@ class _EmployeeAttendenceScreenState
         return Theme(
           data: Theme.of(context).copyWith(
             colorScheme: const ColorScheme.light(
-              primary: AppColors.blackBlue, // header background color
+              primary: AppColors.tertiary, // header background color
               onPrimary: Colors.white, // header text color
-              onSurface: AppColors.blue, // body text color
+              onSurface: AppColors.tertiary, // body text color
             ),
             textButtonTheme: TextButtonThemeData(
               style: TextButton.styleFrom(
@@ -105,7 +105,7 @@ class _EmployeeAttendenceScreenState
                     width: 200,
                     height: 50,
                     decoration: BoxDecoration(
-                      color: AppColors.purple,
+                      color: AppColors.tertiary,
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: Center(
@@ -144,7 +144,7 @@ class _EmployeeAttendenceScreenState
                             vertical: 15.0, horizontal: 8),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
-                          color: AppColors.fieldGrey,
+                          color: AppColors.tertiary,
                         ),
                         child: Row(
                           children: [
@@ -156,7 +156,7 @@ class _EmployeeAttendenceScreenState
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(60),
                                     border: Border.all(
-                                      color: Colors.blue,
+                                      color: AppColors.tertiary,
                                       width:
                                           4, // Adjust this value to your preference
                                     ),
@@ -164,7 +164,7 @@ class _EmployeeAttendenceScreenState
                                   child: CircleAvatar(
                                     maxRadius: 60,
                                     minRadius: 60,
-                                    backgroundColor: AppColors.fieldGrey,
+                                    backgroundColor: AppColors.tertiary,
                                     child: employee.employeePic!.isNotEmpty
                                         ? ClipRRect(
                                             borderRadius:

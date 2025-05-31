@@ -89,28 +89,37 @@ class _RegisterProfileAccountScreenState
               Center(
                 child: Stack(
                   children: [
-                    CircleAvatar(
-                      maxRadius: 60,
-                      minRadius: 60,
-                      backgroundColor: AppColors.fieldGrey,
-                      child: (pickedImage != null)
-                          ? ClipRRect(
-                              borderRadius: BorderRadius.circular(100),
-                              child: Image.file(
-                                pickedImage,
-                                height: 100,
-                                width: 100,
-                                scale: 1,
-                                filterQuality: FilterQuality.medium,
-                                fit: BoxFit.cover,
+                    Container(
+                      decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          border: Border.all(
+                            color: AppColors.primary,
+                            width: 1,
+                          )),
+                      child: CircleAvatar(
+                        maxRadius: 60,
+                        minRadius: 60,
+                        backgroundColor: AppColors.appBackGroundColors,
+                        child: (pickedImage != null)
+                            ? ClipRRect(
+                                borderRadius: BorderRadius.circular(100),
+                                child: Image.file(
+                                  pickedImage,
+                                  height: 100,
+                                  width: 100,
+                                  scale: 1,
+                                  filterQuality: FilterQuality.medium,
+                                  fit: BoxFit.cover,
+                                ),
+                              )
+                            : Image.asset(
+                                AssetImages.personIcon,
+                                height: 55,
+                                width: 55,
+                                color: AppColors.primary,
+                                fit: BoxFit.contain,
                               ),
-                            )
-                          : Image.asset(
-                              AssetImages.personIcon,
-                              height: 55,
-                              width: 55,
-                              fit: BoxFit.contain,
-                            ),
+                      ),
                     ),
                     Positioned(
                       bottom: 0,
@@ -120,12 +129,13 @@ class _RegisterProfileAccountScreenState
                         width: 30,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(30),
-                            color: AppColors.darkBlue),
+                            color: AppColors.saveButtonColors),
                         child: Center(
                           child: IconButton(
-                            icon: const Icon(Icons.edit),
+                            icon: const Icon(Icons.edit,
+                                color: AppColors.primary),
                             iconSize: 16,
-                            color: AppColors.primary,
+                            color: AppColors.saveButtonColors,
                             onPressed: () {
                               ref.read(overlayProvider.notifier).state = true;
                             },
@@ -143,7 +153,7 @@ class _RegisterProfileAccountScreenState
                         width: 30,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(30),
-                            color: AppColors.darkBlue),
+                            color: AppColors.saveButtonColors),
                         child: Center(
                           child: IconButton(
                             icon: const Icon(Icons.edit),
@@ -196,8 +206,7 @@ class _RegisterProfileAccountScreenState
                                                 children: [
                                                   const Icon(
                                                     Icons.camera_alt_outlined,
-                                                    color: AppColors
-                                                        .textMessageBtnColor,
+                                                    color: AppColors.secondary,
                                                   ),
                                                   const SizedBox(width: 15),
                                                   Text(
@@ -206,7 +215,7 @@ class _RegisterProfileAccountScreenState
                                                         .textTheme.bodyMedium
                                                         ?.copyWith(
                                                             color: AppColors
-                                                                .textMessageBtnColor),
+                                                                .secondary),
                                                   ),
                                                 ],
                                               ),
@@ -244,7 +253,7 @@ class _RegisterProfileAccountScreenState
                                                   const Icon(
                                                     Icons.image_outlined,
                                                     color: AppColors
-                                                        .textMessageBtnColor,
+                                                        .textFieldColors,
                                                   ),
                                                   const SizedBox(width: 15),
                                                   Text(
@@ -253,7 +262,7 @@ class _RegisterProfileAccountScreenState
                                                         .textTheme.bodyMedium
                                                         ?.copyWith(
                                                       color: AppColors
-                                                          .textMessageBtnColor,
+                                                          .textFieldColors,
                                                     ),
                                                   ),
                                                 ],
@@ -287,7 +296,7 @@ class _RegisterProfileAccountScreenState
                                                           .textTheme.bodyMedium
                                                           ?.copyWith(
                                                         color: AppColors
-                                                            .textMessageBtnColor,
+                                                            .textFieldColors,
                                                       ),
                                                     ),
                                                   ],
@@ -319,16 +328,16 @@ class _RegisterProfileAccountScreenState
                     }
                     return null;
                   },
-                  fillColor: AppColors.fieldGrey,
+                  fillColor: AppColors.textFieldBackground,
                   border: const OutlineInputBorder(
                     borderSide: BorderSide.none,
                     borderRadius: BorderRadius.all(
-                      Radius.circular(25),
+                      Radius.circular(50),
                     ),
                   ),
+                  textStyle: theme.textTheme.bodyMedium,
                   hintText: 'Company Name',
-                  hintStyle: theme.textTheme.bodyMedium!
-                      .copyWith(color: AppColors.fieldTextcolor),
+                  hintStyle: theme.textTheme.bodyMedium!.copyWith(),
                   lines: 1),
               const SizedBox(
                 height: 20,
@@ -342,13 +351,16 @@ class _RegisterProfileAccountScreenState
                     }
                     return null;
                   },
-                  fillColor: AppColors.fieldGrey,
+                  fillColor: AppColors.textFieldBackground,
                   border: const OutlineInputBorder(
-                      borderSide: BorderSide.none,
-                      borderRadius: BorderRadius.all(Radius.circular(25))),
+                    borderSide: BorderSide.none,
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(50),
+                    ),
+                  ),
+                  textStyle: theme.textTheme.bodyMedium,
                   hintText: 'Full Name',
-                  hintStyle: theme.textTheme.bodyMedium!
-                      .copyWith(color: AppColors.fieldTextcolor),
+                  hintStyle: theme.textTheme.bodyMedium!.copyWith(),
                   lines: 1),
               const SizedBox(
                 height: 20,
@@ -362,13 +374,16 @@ class _RegisterProfileAccountScreenState
                     }
                     return null;
                   },
-                  fillColor: AppColors.fieldGrey,
+                  fillColor: AppColors.textFieldBackground,
                   border: const OutlineInputBorder(
-                      borderSide: BorderSide.none,
-                      borderRadius: BorderRadius.all(Radius.circular(25))),
+                    borderSide: BorderSide.none,
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(50),
+                    ),
+                  ),
+                  textStyle: theme.textTheme.bodyMedium,
                   hintText: 'Designation',
-                  hintStyle: theme.textTheme.bodyMedium!
-                      .copyWith(color: AppColors.fieldTextcolor),
+                  hintStyle: theme.textTheme.bodyMedium!.copyWith(),
                   lines: 1),
               const SizedBox(
                 height: 20,
@@ -382,13 +397,16 @@ class _RegisterProfileAccountScreenState
                     }
                     return null;
                   },
-                  fillColor: AppColors.fieldGrey,
+                  fillColor: AppColors.textFieldBackground,
                   border: const OutlineInputBorder(
-                      borderSide: BorderSide.none,
-                      borderRadius: BorderRadius.all(Radius.circular(25))),
+                    borderSide: BorderSide.none,
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(50),
+                    ),
+                  ),
+                  textStyle: theme.textTheme.bodyMedium,
                   hintText: 'Address',
-                  hintStyle: theme.textTheme.bodyMedium!
-                      .copyWith(color: AppColors.fieldTextcolor),
+                  hintStyle: theme.textTheme.bodyMedium!.copyWith(),
                   lines: 1),
               const SizedBox(
                 height: 20,
@@ -406,13 +424,16 @@ class _RegisterProfileAccountScreenState
                   inputFormatters: <TextInputFormatter>[
                     FilteringTextInputFormatter.digitsOnly
                   ],
-                  fillColor: AppColors.fieldGrey,
+                  fillColor: AppColors.textFieldBackground,
                   border: const OutlineInputBorder(
-                      borderSide: BorderSide.none,
-                      borderRadius: BorderRadius.all(Radius.circular(25))),
+                    borderSide: BorderSide.none,
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(50),
+                    ),
+                  ),
+                  textStyle: theme.textTheme.bodyMedium,
                   hintText: 'Mobile No',
-                  hintStyle: theme.textTheme.bodyMedium!
-                      .copyWith(color: AppColors.fieldTextcolor),
+                  hintStyle: theme.textTheme.bodyMedium!.copyWith(),
                   lines: 1),
               const SizedBox(
                 height: 25,
@@ -424,8 +445,6 @@ class _RegisterProfileAccountScreenState
                   if (_formKey.currentState!.validate()) {
                     showLoaderDialog(
                       context,
-                      true,
-                      theme: theme,
                     );
                     final response = ref
                         .read(authProvider.notifier)
@@ -461,8 +480,7 @@ class _RegisterProfileAccountScreenState
                 },
                 child: Text(
                   'Register',
-                  style: theme.textTheme.bodyLarge!
-                      .copyWith(color: AppColors.primary),
+                  style: theme.textTheme.bodyLarge,
                 ),
               ),
               const SizedBox(

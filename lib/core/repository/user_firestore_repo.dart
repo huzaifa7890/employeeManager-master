@@ -21,7 +21,7 @@ class UserFirebaseRepository {
       final data = await firebaseReference.users.doc(userId).get();
       return data.data();
     } catch (e) {
-      rethrow;
+      return null;
     }
   }
 }

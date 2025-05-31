@@ -70,7 +70,7 @@ class _AddEmployeeScreenState extends ConsumerState<AddEmployeeScreen> {
                             maxRadius: 60,
                             minRadius: 60,
                             backgroundColor:
-                                AppColors.fieldGrey, // Placeholder color
+                                AppColors.secondary, // Placeholder color
                             child: (pickedImage != null)
                                 ? ClipRRect(
                                     borderRadius: BorderRadius.circular(100),
@@ -114,7 +114,7 @@ class _AddEmployeeScreenState extends ConsumerState<AddEmployeeScreen> {
                               width: 30,
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(30),
-                                  color: AppColors.darkBlue),
+                                  color: AppColors.primary),
                               child: Center(
                                 child: IconButton(
                                   icon: const Icon(Icons.edit),
@@ -138,7 +138,7 @@ class _AddEmployeeScreenState extends ConsumerState<AddEmployeeScreen> {
                               width: 30,
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(30),
-                                  color: AppColors.darkBlue),
+                                  color: AppColors.primary),
                               child: Center(
                                 child: IconButton(
                                   icon: const Icon(Icons.edit),
@@ -197,7 +197,7 @@ class _AddEmployeeScreenState extends ConsumerState<AddEmployeeScreen> {
                                                           Icons
                                                               .camera_alt_outlined,
                                                           color: AppColors
-                                                              .textMessageBtnColor,
+                                                              .secondary,
                                                         ),
                                                         const SizedBox(
                                                             width: 15),
@@ -207,7 +207,7 @@ class _AddEmployeeScreenState extends ConsumerState<AddEmployeeScreen> {
                                                               .bodyMedium
                                                               ?.copyWith(
                                                                   color: AppColors
-                                                                      .textMessageBtnColor),
+                                                                      .secondary),
                                                         ),
                                                       ],
                                                     ),
@@ -248,7 +248,7 @@ class _AddEmployeeScreenState extends ConsumerState<AddEmployeeScreen> {
                                                         const Icon(
                                                           Icons.image_outlined,
                                                           color: AppColors
-                                                              .textMessageBtnColor,
+                                                              .secondary,
                                                         ),
                                                         const SizedBox(
                                                             width: 15),
@@ -258,7 +258,7 @@ class _AddEmployeeScreenState extends ConsumerState<AddEmployeeScreen> {
                                                               .bodyMedium
                                                               ?.copyWith(
                                                             color: AppColors
-                                                                .textMessageBtnColor,
+                                                                .secondary,
                                                           ),
                                                         ),
                                                       ],
@@ -298,7 +298,7 @@ class _AddEmployeeScreenState extends ConsumerState<AddEmployeeScreen> {
                                                                 .bodyMedium
                                                                 ?.copyWith(
                                                               color: AppColors
-                                                                  .textMessageBtnColor,
+                                                                  .secondary,
                                                             ),
                                                           ),
                                                         ],
@@ -325,7 +325,7 @@ class _AddEmployeeScreenState extends ConsumerState<AddEmployeeScreen> {
                             AppTextField(
                               height: 65,
                               textController: cnicController,
-                              fillColor: AppColors.fieldGrey,
+                              fillColor: AppColors.secondary,
                               border: const OutlineInputBorder(
                                 borderSide: BorderSide.none,
                                 borderRadius: BorderRadius.all(
@@ -344,15 +344,14 @@ class _AddEmployeeScreenState extends ConsumerState<AddEmployeeScreen> {
                                 return null;
                               },
                               hintText: 'NIC / Employee ID',
-                              hintStyle: theme.textTheme.bodyMedium!
-                                  .copyWith(color: AppColors.fieldTextcolor),
+                              hintStyle: theme.textTheme.bodyMedium!.copyWith(),
                               lines: 1,
                             ),
                             const SizedBox(height: 20),
                             AppTextField(
                               height: 65,
                               textController: fullNameController,
-                              fillColor: AppColors.fieldGrey,
+                              fillColor: AppColors.secondary,
                               border: const OutlineInputBorder(
                                 borderSide: BorderSide.none,
                                 borderRadius: BorderRadius.all(
@@ -367,8 +366,7 @@ class _AddEmployeeScreenState extends ConsumerState<AddEmployeeScreen> {
                                 return null;
                               },
                               hintText: 'Full Name',
-                              hintStyle: theme.textTheme.bodyMedium!
-                                  .copyWith(color: AppColors.fieldTextcolor),
+                              hintStyle: theme.textTheme.bodyMedium!.copyWith(),
                               lines: 1,
                             ),
                           ],
@@ -380,7 +378,7 @@ class _AddEmployeeScreenState extends ConsumerState<AddEmployeeScreen> {
                   AppTextField(
                     height: 65,
                     textController: designationController,
-                    fillColor: AppColors.fieldGrey,
+                    fillColor: AppColors.secondary,
                     border: const OutlineInputBorder(
                       borderSide: BorderSide.none,
                       borderRadius: BorderRadius.all(
@@ -395,8 +393,7 @@ class _AddEmployeeScreenState extends ConsumerState<AddEmployeeScreen> {
                       return null;
                     },
                     hintText: 'Designation',
-                    hintStyle: theme.textTheme.bodyMedium!
-                        .copyWith(color: AppColors.fieldTextcolor),
+                    hintStyle: theme.textTheme.bodyMedium!.copyWith(),
                     lines: 1,
                   ),
                   const SizedBox(height: 20),
@@ -404,7 +401,7 @@ class _AddEmployeeScreenState extends ConsumerState<AddEmployeeScreen> {
                     height: 65,
                     textController: mobileNoController,
                     keyboardType: TextInputType.number,
-                    fillColor: AppColors.fieldGrey,
+                    fillColor: AppColors.secondary,
                     border: const OutlineInputBorder(
                       borderSide: BorderSide.none,
                       borderRadius: BorderRadius.all(
@@ -422,15 +419,14 @@ class _AddEmployeeScreenState extends ConsumerState<AddEmployeeScreen> {
                       return null;
                     },
                     hintText: 'Mobile No',
-                    hintStyle: theme.textTheme.bodyMedium!
-                        .copyWith(color: AppColors.fieldTextcolor),
+                    hintStyle: theme.textTheme.bodyMedium!.copyWith(),
                     lines: 1,
                   ),
                   const SizedBox(height: 20),
                   AppTextField(
                     height: 65,
                     textController: payController,
-                    fillColor: AppColors.fieldGrey,
+                    fillColor: AppColors.secondary,
                     border: const OutlineInputBorder(
                       borderSide: BorderSide.none,
                       borderRadius: BorderRadius.all(
@@ -449,8 +445,7 @@ class _AddEmployeeScreenState extends ConsumerState<AddEmployeeScreen> {
                       return null;
                     },
                     hintText: 'Pay',
-                    hintStyle: theme.textTheme.bodyMedium!
-                        .copyWith(color: AppColors.fieldTextcolor),
+                    hintStyle: theme.textTheme.bodyMedium!.copyWith(),
                     lines: 1,
                   ),
                   const SizedBox(height: 20),
@@ -458,7 +453,7 @@ class _AddEmployeeScreenState extends ConsumerState<AddEmployeeScreen> {
                     height: 65,
                     textController: addressController,
                     textInputAction: TextInputAction.next,
-                    fillColor: AppColors.fieldGrey,
+                    fillColor: AppColors.secondary,
                     border: const OutlineInputBorder(
                       borderSide: BorderSide.none,
                       borderRadius: BorderRadius.all(
@@ -466,8 +461,7 @@ class _AddEmployeeScreenState extends ConsumerState<AddEmployeeScreen> {
                       ),
                     ),
                     hintText: 'Address',
-                    hintStyle: theme.textTheme.bodyMedium!
-                        .copyWith(color: AppColors.fieldTextcolor),
+                    hintStyle: theme.textTheme.bodyMedium!.copyWith(),
                     lines: 1,
                   ),
                   const SizedBox(height: 20),
@@ -475,7 +469,7 @@ class _AddEmployeeScreenState extends ConsumerState<AddEmployeeScreen> {
                     height: 65,
                     textController: detailsController,
                     textInputAction: TextInputAction.done,
-                    fillColor: AppColors.fieldGrey,
+                    fillColor: AppColors.secondary,
                     border: const OutlineInputBorder(
                       borderSide: BorderSide.none,
                       borderRadius: BorderRadius.all(
@@ -483,8 +477,7 @@ class _AddEmployeeScreenState extends ConsumerState<AddEmployeeScreen> {
                       ),
                     ),
                     hintText: 'Details',
-                    hintStyle: theme.textTheme.bodyMedium!
-                        .copyWith(color: AppColors.fieldTextcolor),
+                    hintStyle: theme.textTheme.bodyMedium!.copyWith(),
                     lines: 1,
                   ),
                   const SizedBox(height: 20),
@@ -493,8 +486,6 @@ class _AddEmployeeScreenState extends ConsumerState<AddEmployeeScreen> {
                       if (_formKey.currentState!.validate()) {
                         showLoaderDialog(
                           context,
-                          true,
-                          theme: theme,
                         );
 
                         final userId = ref.read(userProvider)?.id;

@@ -4,6 +4,7 @@ class AssetImages {
   static const String addEmployeeImage = 'assets/images/add.png';
   static const String markEmployeeImage = 'assets/images/markAttendence.png';
   static const String employeeListImage = 'assets/images/list.png';
+  static const String welcomeImage = 'assets/images/welcome.png';
   static const String salaryslip = 'assets/images/salaryslip.png';
   static const String multipleAttendence = 'assets/images/multiple.png';
   static const String profileIcon = 'assets/icons/profile_icon.png';
@@ -24,4 +25,5 @@ class AppRoutes {
   static const String privacyPolicyPage = "/privacyPolicyPage";
   static const String termConditionPage = "/termConditionPage";
   static const String profileScreen = "/profileScreen";
+  static const String welcomeScreen = "/welcomeScreen";
 }

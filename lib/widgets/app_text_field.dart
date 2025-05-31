@@ -119,10 +119,8 @@ class AppTextField extends StatelessWidget {
       decoration: InputDecoration(
         hintText: hintText,
         prefixIconConstraints: const BoxConstraints(
-          maxWidth: 42,
-          maxHeight: 42,
-          minHeight: 26,
-          minWidth: 26,
+          minHeight: 50,
+          minWidth: 50,
         ),
         prefixIcon: prefixIcon,
         // Use prefixIcon if provided
@@ -141,7 +139,7 @@ class AppTextField extends StatelessWidget {
         contentPadding: contentPadding ??
             const EdgeInsets.symmetric(
               vertical: 20.0,
-              horizontal: 10.0,
+              horizontal: 20.0,
             ),
       ),
     );

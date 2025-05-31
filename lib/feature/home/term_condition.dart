@@ -75,8 +75,8 @@ class _MobileTermConditionScreenState
                         TextSpan(
                           text: 'huzaifasgd25@gmail.com\n\n',
                           style: theme.textTheme.bodyMedium?.copyWith(
-                              color: AppColors.textMessageBtnColor,
-                              decorationColor: AppColors.textMessageBtnColor,
+                              color: AppColors.tertiary,
+                              decorationColor: AppColors.tertiary,
                               decoration: TextDecoration.underline,
                               fontSize: 16,
                               fontWeight: FontWeight.w600),

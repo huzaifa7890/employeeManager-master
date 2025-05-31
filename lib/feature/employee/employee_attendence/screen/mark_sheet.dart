@@ -65,9 +65,9 @@ class _MarkAttendenceSheetState extends ConsumerState<MarkAttendenceSheet> {
         return Theme(
           data: Theme.of(context).copyWith(
             colorScheme: const ColorScheme.light(
-              primary: AppColors.blackBlue, // header background color
+              primary: AppColors.tertiary, // header background color
               onPrimary: Colors.white, // header text color
-              onSurface: AppColors.blue, // body text color
+              onSurface: AppColors.tertiary, // body text color
             ),
             textButtonTheme: TextButtonThemeData(
               style: TextButton.styleFrom(
@@ -144,7 +144,7 @@ class _MarkAttendenceSheetState extends ConsumerState<MarkAttendenceSheet> {
                       const EdgeInsets.symmetric(vertical: 15.0, horizontal: 8),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
-                    color: AppColors.fieldGrey,
+                    color: AppColors.tertiary,
                   ),
                   child: Column(
                     children: [
@@ -166,7 +166,7 @@ class _MarkAttendenceSheetState extends ConsumerState<MarkAttendenceSheet> {
                                 child: CircleAvatar(
                                   maxRadius: 60,
                                   minRadius: 60,
-                                  backgroundColor: AppColors.fieldGrey,
+                                  backgroundColor: AppColors.tertiary,
                                   child: widget.employee.employeePic!.isNotEmpty
                                       ? ClipRRect(
                                           borderRadius:
@@ -225,7 +225,7 @@ class _MarkAttendenceSheetState extends ConsumerState<MarkAttendenceSheet> {
                         width: 200,
                         height: 50,
                         decoration: BoxDecoration(
-                          color: AppColors.purple,
+                          color: AppColors.tertiary,
                           borderRadius: BorderRadius.circular(10),
                         ),
                         child: Center(
@@ -270,7 +270,7 @@ class _MarkAttendenceSheetState extends ConsumerState<MarkAttendenceSheet> {
                 Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(25),
-                    color: AppColors.fieldGrey,
+                    color: AppColors.tertiary,
                   ),
                   child: Row(
                     children: [
@@ -287,7 +287,7 @@ class _MarkAttendenceSheetState extends ConsumerState<MarkAttendenceSheet> {
                           // hintText: "Basic Pay",
                           textAlign: TextAlign.end,
                           textController: basicPayController,
-                          fillColor: AppColors.fieldGrey,
+                          fillColor: AppColors.tertiary,
                           border: const OutlineInputBorder(
                             borderSide: BorderSide.none,
                             borderRadius: BorderRadius.all(
@@ -311,7 +311,7 @@ class _MarkAttendenceSheetState extends ConsumerState<MarkAttendenceSheet> {
                 Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(25),
-                    color: AppColors.fieldGrey,
+                    color: AppColors.tertiary,
                   ),
                   child: Row(
                     children: [
@@ -327,7 +327,7 @@ class _MarkAttendenceSheetState extends ConsumerState<MarkAttendenceSheet> {
                           // hintText: "Tax/Debit",
                           textAlign: TextAlign.end,
                           textController: taxDebitController,
-                          fillColor: AppColors.fieldGrey,
+                          fillColor: AppColors.tertiary,
                           keyboardType: TextInputType.number,
                           inputFormatters: [
                             FilteringTextInputFormatter.digitsOnly,
@@ -355,7 +355,7 @@ class _MarkAttendenceSheetState extends ConsumerState<MarkAttendenceSheet> {
                 Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(25),
-                    color: AppColors.fieldGrey,
+                    color: AppColors.tertiary,
                   ),
                   child: Row(
                     children: [
@@ -375,7 +375,7 @@ class _MarkAttendenceSheetState extends ConsumerState<MarkAttendenceSheet> {
                           inputFormatters: [
                             FilteringTextInputFormatter.digitsOnly,
                           ],
-                          fillColor: AppColors.fieldGrey,
+                          fillColor: AppColors.tertiary,
                           border: const OutlineInputBorder(
                             borderSide: BorderSide.none,
                             borderRadius: BorderRadius.all(
@@ -399,7 +399,7 @@ class _MarkAttendenceSheetState extends ConsumerState<MarkAttendenceSheet> {
                 Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(25),
-                    color: AppColors.fieldGrey,
+                    color: AppColors.tertiary,
                   ),
                   child: Row(
                     children: [
@@ -416,7 +416,7 @@ class _MarkAttendenceSheetState extends ConsumerState<MarkAttendenceSheet> {
                           // hintText: "Total Payments",
                           textAlign: TextAlign.end,
                           textController: totalController,
-                          fillColor: AppColors.fieldGrey,
+                          fillColor: AppColors.tertiary,
                           border: const OutlineInputBorder(
                             borderSide: BorderSide.none,
                             borderRadius: BorderRadius.all(

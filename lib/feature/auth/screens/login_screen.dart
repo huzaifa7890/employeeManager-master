@@ -42,10 +42,6 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
     final theme = Theme.of(context);
     final showPassword = ref.watch(showPasswordProvider);
     return Scaffold(
-      appBar: AppBar(
-        toolbarHeight: 0,
-        automaticallyImplyLeading: false,
-      ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 24),
         child: Form(
@@ -56,18 +52,21 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
               const SizedBox(
                 height: 69,
               ),
-              Center(
-                child: Image.asset(AssetImages.appLogo),
-              ),
+              // Center(
+              //   child: Image.asset(AssetImages.appLogo),
+              // ),
               const SizedBox(height: 37),
-              const Center(
+              Center(
                 child: Text(
                   'Sign In',
-                  // style: theme.textTheme.displayLarge,
+                  style: theme.textTheme.displayLarge?.copyWith(
+                    fontSize: 32,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
               const SizedBox(
-                height: 66,
+                height: 46,
               ),
               AppTextField(
                 textController: emailController,
@@ -75,9 +74,15 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                 border: const OutlineInputBorder(
                   borderSide: BorderSide.none,
                   borderRadius: BorderRadius.all(
-                    Radius.circular(25),
+                    Radius.circular(50),
                   ),
                 ),
+                textStyle: theme.textTheme.bodyMedium,
+                prefixIcon: const Icon(
+                  Icons.email_outlined,
+                  color: AppColors.primary,
+                ),
+                hintStyle: theme.textTheme.bodyMedium,
                 validator: (value) {
                   if (value!.isEmpty) {
                     return "Please Enter Valid Emails";
@@ -86,7 +91,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                   }
                   return null;
                 },
-                fillColor: AppColors.fieldGrey,
+                fillColor: AppColors.textFieldBackground,
               ),
               const SizedBox(
                 height: 30,
@@ -100,34 +105,38 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                     }
                     return null;
                   },
-                  fillColor: AppColors.fieldGrey,
+                  fillColor: AppColors.textFieldBackground,
                   border: const OutlineInputBorder(
                     borderSide: BorderSide.none,
                     borderRadius: BorderRadius.all(
-                      Radius.circular(25),
+                      Radius.circular(50),
                     ),
+                  ),
+                  textStyle: theme.textTheme.bodyMedium,
+                  prefixIcon: const Icon(
+                    Icons.password_sharp,
+                    color: AppColors.primary,
                   ),
                   hintText: 'Password',
                   hintStyle: theme.textTheme.bodyMedium!
-                      .copyWith(color: AppColors.fieldTextcolor),
+                      .copyWith(color: AppColors.primary),
                   // length: 327,
                   lines: 1),
               const SizedBox(
-                height: 25,
+                height: 10,
               ),
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  TextButton(
-                    onPressed: () {
-                      // context.push(AppRoutes.forgotPasswordScreen);
-                    },
-                    child: Text(
-                      'Forgot password?',
-                      style: theme.textTheme.bodyMedium!
-                          .copyWith(color: AppColors.appThemeColor),
-                    ),
-                  ),
+                  // TextButton(
+                  //   onPressed: () {
+                  //     // context.push(AppRoutes.forgotPasswordScreen);
+                  //   },
+                  //   child: Text(
+                  //     'Forgot password?',
+                  //     style: theme.textTheme.bodyMedium!.copyWith(),
+                  //   ),
+                  // ),
                   TextButton(
                     onPressed: () {
                       ref.read(showPasswordProvider.notifier).state =
@@ -135,8 +144,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                     },
                     child: Text(
                       'Show password',
-                      style: theme.textTheme.bodyMedium
-                          ?.copyWith(color: AppColors.appThemeColor),
+                      style: theme.textTheme.bodyMedium?.copyWith(),
                     ),
                   ),
                 ],
@@ -149,8 +157,6 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                   if (_formKey.currentState!.validate()) {
                     showLoaderDialog(
                       context,
-                      true,
-                      theme: theme,
                     );
                     final response = ref.read(authProvider.notifier).loginUser(
                         emailController.text, passwordController.text);
@@ -163,10 +169,10 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                     });
                   }
                 },
-                child: const Text(
-                  'Sign in',
-                  // style: theme.textTheme.bodyLarge!
-                  //     .copyWith(color: AppColors.primary),
+                child: Text(
+                  'Login',
+                  style: theme.textTheme.bodyLarge!
+                      .copyWith(fontSize: 16, fontWeight: FontWeight.bold),
                 ),
               ),
               const SizedBox(
@@ -181,8 +187,6 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                     onPressed: () {
                       showLoaderDialog(
                         context,
-                        true,
-                        theme: theme,
                       );
                       final response =
                           ref.read(authProvider.notifier).loginWithGoogle();
@@ -202,8 +206,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                 child: RichText(
                     text: TextSpan(
                         text: 'Don’t have an account? ',
-                        style: theme.textTheme.bodyMedium!
-                            .copyWith(color: AppColors.textColor),
+                        style: theme.textTheme.bodyMedium!.copyWith(),
                         children: [
                       TextSpan(
                           text: 'Register',
@@ -211,9 +214,8 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                             ..onTap = () {
                               context.push(AppRoutes.registerAccountScreen);
                             },
-                          style: theme.textTheme.bodyMedium?.copyWith(
-                              color: AppColors.appThemeColor,
-                              fontWeight: FontWeight.bold))
+                          style: theme.textTheme.bodyMedium
+                              ?.copyWith(fontWeight: FontWeight.bold))
                     ])),
               ),
               const SizedBox(

@@ -60,7 +60,7 @@ class _SellerSettingScreenState extends ConsumerState<MobileSettingScreen> {
             ),
             Container(
               decoration: BoxDecoration(
-                border: Border.all(color: AppColors.logoButton, width: 1),
+                border: Border.all(width: 1),
                 borderRadius: const BorderRadius.all(
                   Radius.circular(25),
                 ),

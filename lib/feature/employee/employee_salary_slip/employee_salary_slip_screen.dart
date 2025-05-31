@@ -67,7 +67,7 @@ class _EmployeeSalarySlipScreenState
                         vertical: 15.0, horizontal: 8),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      color: AppColors.fieldGrey,
+                      color: AppColors.tertiary,
                     ),
                     child: Column(
                       children: [
@@ -89,7 +89,7 @@ class _EmployeeSalarySlipScreenState
                                   child: CircleAvatar(
                                     maxRadius: 60,
                                     minRadius: 60,
-                                    backgroundColor: AppColors.fieldGrey,
+                                    backgroundColor: AppColors.tertiary,
                                     child: employee.employeePic!.isNotEmpty
                                         ? ClipRRect(
                                             borderRadius:

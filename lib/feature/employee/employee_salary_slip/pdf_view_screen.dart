@@ -112,7 +112,7 @@ class _PdfViewScreenState extends ConsumerState<PdfViewScreen> {
                       CircleAvatar(
                         maxRadius: 30,
                         minRadius: 30,
-                        backgroundColor: AppColors.fieldGrey,
+                        backgroundColor: AppColors.tertiary,
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(51),
                           child: Image.network(
@@ -127,8 +127,7 @@ class _PdfViewScreenState extends ConsumerState<PdfViewScreen> {
                       const SizedBox(height: 10),
                       Text(
                         user?.name ?? '',
-                        style: theme.textTheme.titleLarge!
-                            .copyWith(color: AppColors.appThemeColor),
+                        style: theme.textTheme.titleLarge!.copyWith(),
                       ),
                       const SizedBox(height: 10),
                       Text(
@@ -166,7 +165,7 @@ class _PdfViewScreenState extends ConsumerState<PdfViewScreen> {
                       CircleAvatar(
                         maxRadius: 30,
                         minRadius: 30,
-                        backgroundColor: AppColors.fieldGrey,
+                        backgroundColor: AppColors.tertiary,
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(51),
                           child: widget.employee.employeePic!.isNotEmpty
@@ -188,8 +187,7 @@ class _PdfViewScreenState extends ConsumerState<PdfViewScreen> {
                       const SizedBox(height: 10),
                       Text(
                         widget.employee.name ?? '',
-                        style: theme.textTheme.titleLarge!
-                            .copyWith(color: AppColors.appThemeColor),
+                        style: theme.textTheme.titleLarge!.copyWith(),
                       ),
                       const SizedBox(height: 10),
                       Text(
@@ -218,9 +216,9 @@ class _PdfViewScreenState extends ConsumerState<PdfViewScreen> {
                     showBottomBorder: true,
                     dividerThickness: 1,
                     headingRowColor:
-                        const WidgetStatePropertyAll(AppColors.appThemeColor),
+                        const WidgetStatePropertyAll(AppColors.tertiary),
                     dataRowColor:
-                        const WidgetStatePropertyAll(AppColors.fieldGrey),
+                        const WidgetStatePropertyAll(AppColors.tertiary),
                     columnSpacing: 12,
                     columns: <DataColumn>[
                       DataColumn(
@@ -288,7 +286,7 @@ class _PdfViewScreenState extends ConsumerState<PdfViewScreen> {
                                 width: 1,
                                 thickness: 1,
                                 color: AppColors
-                                    .dividerColor, // You can define a divider color in your theme or use any color
+                                    .tertiary, // You can define a divider color in your theme or use any color
                               ),
                             ],
                           ),
@@ -306,7 +304,7 @@ class _PdfViewScreenState extends ConsumerState<PdfViewScreen> {
                                 width: 1,
                                 thickness: 1,
                                 color: AppColors
-                                    .dividerColor, // You can define a divider color in your theme or use any color
+                                    .tertiary, // You can define a divider color in your theme or use any color
                               ),
                             ],
                           ),
@@ -324,7 +322,7 @@ class _PdfViewScreenState extends ConsumerState<PdfViewScreen> {
                                 width: 1,
                                 thickness: 1,
                                 color: AppColors
-                                    .dividerColor, // You can define a divider color in your theme or use any color
+                                    .tertiary, // You can define a divider color in your theme or use any color
                               ),
                             ],
                           ),
@@ -342,7 +340,7 @@ class _PdfViewScreenState extends ConsumerState<PdfViewScreen> {
                                 width: 1,
                                 thickness: 1,
                                 color: AppColors
-                                    .dividerColor, // You can define a divider color in your theme or use any color
+                                    .tertiary, // You can define a divider color in your theme or use any color
                               ),
                             ],
                           ),
@@ -360,7 +358,7 @@ class _PdfViewScreenState extends ConsumerState<PdfViewScreen> {
                                 width: 1,
                                 thickness: 1,
                                 color: AppColors
-                                    .dividerColor, // You can define a divider color in your theme or use any color
+                                    .tertiary, // You can define a divider color in your theme or use any color
                               ),
                             ],
                           ),

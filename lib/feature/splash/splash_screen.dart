@@ -34,7 +34,7 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
   Widget build(BuildContext context) {
     // final invesNetworkUser = ref.watch(userProvider);
     return FlutterSplashScreen.fadeIn(
-      backgroundColor: AppColors.primary,
+      backgroundColor: AppColors.whiteColors,
       childWidget: SizedBox(
         height: 250,
         width: double.infinity,
