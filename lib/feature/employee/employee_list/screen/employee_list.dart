@@ -34,7 +34,7 @@ class _EmployeeListState extends ConsumerState<EmployeeList> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: AppColors.secondary,
+          backgroundColor: AppColors.whiteColors,
           iconTheme: const IconThemeData(color: AppColors.primary),
           title: Text(
             "Employee List",
@@ -80,24 +80,25 @@ class _EmployeeListState extends ConsumerState<EmployeeList> {
                                   maxRadius: 60,
                                   minRadius: 60,
                                   backgroundColor: AppColors.tertiary,
-                                  child: employee.employeePic!.isNotEmpty
-                                      ? ClipRRect(
-                                          borderRadius:
-                                              BorderRadius.circular(51),
-                                          child: Image.network(
-                                            employee.employeePic ??
-                                                'https://cdn.pixabay.com/photo/2017/02/12/21/29/false-2061131_640.png',
-                                            height: 100,
-                                            width: 100,
-                                            fit: BoxFit.cover,
-                                          ),
-                                        )
-                                      : Image.asset(
-                                          AssetImages.personIcon,
-                                          height: 55,
-                                          width: 55,
-                                          fit: BoxFit.contain,
-                                        ),
+                                  child:
+                                      employee.employeePic?.isNotEmpty ?? false
+                                          ? ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.circular(51),
+                                              child: Image.network(
+                                                employee.employeePic ??
+                                                    'https://cdn.pixabay.com/photo/2017/02/12/21/29/false-2061131_640.png',
+                                                height: 100,
+                                                width: 100,
+                                                fit: BoxFit.cover,
+                                              ),
+                                            )
+                                          : Image.asset(
+                                              AssetImages.personIcon,
+                                              height: 55,
+                                              width: 55,
+                                              fit: BoxFit.contain,
+                                            ),
                                 ),
                               ),
                             ],
@@ -113,11 +114,11 @@ class _EmployeeListState extends ConsumerState<EmployeeList> {
                                 ),
                                 Text(
                                   (employee.designation).toString(),
-                                  style: theme.textTheme.bodyMedium,
+                                  style: theme.textTheme.bodyLarge,
                                 ),
                                 Text(
                                   (employee.cnicId).toString(),
-                                  style: theme.textTheme.bodyMedium,
+                                  style: theme.textTheme.bodyLarge,
                                 ),
                               ],
                             ),

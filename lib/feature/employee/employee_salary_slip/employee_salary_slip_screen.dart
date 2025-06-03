@@ -38,7 +38,7 @@ class _EmployeeSalarySlipScreenState
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: AppColors.secondary,
+          backgroundColor: AppColors.whiteColors,
           iconTheme: const IconThemeData(color: AppColors.primary),
           title: Text(
             "Employee Salary Slip",
@@ -90,7 +90,8 @@ class _EmployeeSalarySlipScreenState
                                     maxRadius: 60,
                                     minRadius: 60,
                                     backgroundColor: AppColors.tertiary,
-                                    child: employee.employeePic!.isNotEmpty
+                                    child: employee.employeePic?.isNotEmpty ??
+                                            false
                                         ? ClipRRect(
                                             borderRadius:
                                                 BorderRadius.circular(51),
@@ -116,16 +117,16 @@ class _EmployeeSalarySlipScreenState
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  employee.name!,
+                                  employee.name ?? "",
                                   style: theme.textTheme.bodyLarge,
                                 ),
                                 Text(
                                   (employee.designation).toString(),
-                                  style: theme.textTheme.bodyMedium,
+                                  style: theme.textTheme.bodyLarge,
                                 ),
                                 Text(
                                   (employee.cnicId).toString(),
-                                  style: theme.textTheme.bodyMedium,
+                                  style: theme.textTheme.bodyLarge,
                                 ),
                               ],
                             ),

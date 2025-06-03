@@ -100,7 +100,7 @@ class _EmployeeAttendenceSheetState
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: AppColors.secondary,
+          backgroundColor: AppColors.whiteColors,
           iconTheme: const IconThemeData(color: AppColors.primary),
           title: Text(
             'Employee Attendance Sheet',
@@ -173,11 +173,11 @@ class _EmployeeAttendenceSheetState
                               ),
                               Text(
                                 (widget.employee.designation).toString(),
-                                style: theme.textTheme.bodyMedium,
+                                style: theme.textTheme.bodyLarge,
                               ),
                               Text(
                                 (widget.employee.cnicId).toString(),
-                                style: theme.textTheme.bodyMedium,
+                                style: theme.textTheme.bodyLarge,
                               ),
                             ],
                           ),
@@ -246,8 +246,7 @@ class _EmployeeAttendenceSheetState
                     child: Center(
                       child: Text(
                         '${DateFormat('dd MMMM y').format(selectedDateRange.start)} - ${DateFormat('dd MMMM y').format(selectedDateRange.end)}',
-                        style: theme.textTheme.bodyLarge!
-                            .copyWith(color: AppColors.primary),
+                        style: theme.textTheme.bodyLarge,
                       ),
                     ),
                   ),
@@ -265,12 +264,8 @@ class _EmployeeAttendenceSheetState
                         ),
                       );
                     },
-                    child: Text(
-                      "Generate Pay Slip ",
-                      style: theme.textTheme.bodyLarge!.copyWith(
-                        color: AppColors.primary,
-                      ),
-                    ))
+                    child: Text("Generate Pay Slip ",
+                        style: theme.textTheme.bodyLarge))
               ],
             ),
           ),

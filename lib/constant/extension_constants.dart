@@ -12,7 +12,6 @@ extension BuildContextHelper on BuildContext {
         content: Text(
           message,
           style: theme.textTheme.bodyLarge?.copyWith(
-            color: AppColors.primary,
             fontSize: 16,
           ),
         ),
@@ -35,11 +34,10 @@ extension BuildContextHelper on BuildContext {
         content: Text(
           message,
           style: theme.textTheme.bodyLarge?.copyWith(
-            color: AppColors.secondary,
             fontSize: 16,
           ),
         ),
-        backgroundColor: AppColors.primary,
+        backgroundColor: AppColors.tertiary,
         duration: const Duration(seconds: 2),
       ),
     );

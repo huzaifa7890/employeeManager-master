@@ -44,7 +44,7 @@ class _AddEmployeeScreenState extends ConsumerState<AddEmployeeScreen> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: AppColors.secondary,
+          backgroundColor: AppColors.whiteColors,
           iconTheme: const IconThemeData(color: AppColors.primary),
           title: Text(
             'Add Employee',
@@ -66,45 +66,54 @@ class _AddEmployeeScreenState extends ConsumerState<AddEmployeeScreen> {
                     children: [
                       Stack(
                         children: [
-                          CircleAvatar(
-                            maxRadius: 60,
-                            minRadius: 60,
-                            backgroundColor:
-                                AppColors.secondary, // Placeholder color
-                            child: (pickedImage != null)
-                                ? ClipRRect(
-                                    borderRadius: BorderRadius.circular(100),
-                                    child: Image.file(
-                                      pickedImage,
-                                      height: 100,
-                                      width: 100,
-                                      fit: BoxFit.cover,
+                          Container(
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                width: 1.5,
+                                color: AppColors.primary,
+                              ),
+                              borderRadius: BorderRadius.circular(100),
+                              color: AppColors.primary,
+                            ),
+                            child: CircleAvatar(
+                              maxRadius: 60,
+                              minRadius: 60,
+                              backgroundColor: AppColors.whiteColors,
+                              child: (pickedImage != null)
+                                  ? ClipRRect(
+                                      borderRadius: BorderRadius.circular(100),
+                                      child: Image.file(
+                                        pickedImage,
+                                        height: 100,
+                                        width: 100,
+                                        fit: BoxFit.cover,
+                                      ),
+                                    )
+                                  : Image.asset(
+                                      AssetImages.personIcon,
+                                      height: 55,
+                                      width: 55,
+                                      fit: BoxFit.contain,
                                     ),
-                                  )
-                                : Image.asset(
-                                    AssetImages.personIcon,
-                                    height: 55,
-                                    width: 55,
-                                    fit: BoxFit.contain,
-                                  ),
-                            // : (pickedImage != null)
-                            //     ? ClipRRect(
-                            //         borderRadius: BorderRadius.circular(100),
-                            //         child: Image.file(
-                            //           pickedImage,
-                            //           height: 100,
-                            //           width: 100,
-                            //           scale: 1,
-                            //           filterQuality: FilterQuality.medium,
-                            //           fit: BoxFit.cover,
-                            //         ),
-                            //       )
-                            //     : Image.asset(
-                            //         AssetImages.personIcon,
-                            //         height: 55,
-                            //         width: 55,
-                            //         fit: BoxFit.contain,
-                            //       ),
+                              // : (pickedImage != null)
+                              //     ? ClipRRect(
+                              //         borderRadius: BorderRadius.circular(100),
+                              //         child: Image.file(
+                              //           pickedImage,
+                              //           height: 100,
+                              //           width: 100,
+                              //           scale: 1,
+                              //           filterQuality: FilterQuality.medium,
+                              //           fit: BoxFit.cover,
+                              //         ),
+                              //       )
+                              //     : Image.asset(
+                              //         AssetImages.personIcon,
+                              //         height: 55,
+                              //         width: 55,
+                              //         fit: BoxFit.contain,
+                              //       ),
+                            ),
                           ),
                           Positioned(
                             bottom: 0,
@@ -114,7 +123,7 @@ class _AddEmployeeScreenState extends ConsumerState<AddEmployeeScreen> {
                               width: 30,
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(30),
-                                  color: AppColors.primary),
+                                  color: AppColors.whiteColors),
                               child: Center(
                                 child: IconButton(
                                   icon: const Icon(Icons.edit),
@@ -138,12 +147,12 @@ class _AddEmployeeScreenState extends ConsumerState<AddEmployeeScreen> {
                               width: 30,
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(30),
-                                  color: AppColors.primary),
+                                  color: AppColors.saveButtonColors),
                               child: Center(
                                 child: IconButton(
                                   icon: const Icon(Icons.edit),
                                   iconSize: 16,
-                                  color: AppColors.primary,
+                                  color: AppColors.whiteColors,
                                   onPressed: () async {
                                     showModalBottomSheet<void>(
                                         context: context,
@@ -325,11 +334,10 @@ class _AddEmployeeScreenState extends ConsumerState<AddEmployeeScreen> {
                             AppTextField(
                               height: 65,
                               textController: cnicController,
-                              fillColor: AppColors.secondary,
                               border: const OutlineInputBorder(
                                 borderSide: BorderSide.none,
                                 borderRadius: BorderRadius.all(
-                                  Radius.circular(25),
+                                  Radius.circular(50),
                                 ),
                               ),
                               textInputAction: TextInputAction.next,
@@ -351,7 +359,6 @@ class _AddEmployeeScreenState extends ConsumerState<AddEmployeeScreen> {
                             AppTextField(
                               height: 65,
                               textController: fullNameController,
-                              fillColor: AppColors.secondary,
                               border: const OutlineInputBorder(
                                 borderSide: BorderSide.none,
                                 borderRadius: BorderRadius.all(
@@ -378,7 +385,6 @@ class _AddEmployeeScreenState extends ConsumerState<AddEmployeeScreen> {
                   AppTextField(
                     height: 65,
                     textController: designationController,
-                    fillColor: AppColors.secondary,
                     border: const OutlineInputBorder(
                       borderSide: BorderSide.none,
                       borderRadius: BorderRadius.all(
@@ -401,7 +407,6 @@ class _AddEmployeeScreenState extends ConsumerState<AddEmployeeScreen> {
                     height: 65,
                     textController: mobileNoController,
                     keyboardType: TextInputType.number,
-                    fillColor: AppColors.secondary,
                     border: const OutlineInputBorder(
                       borderSide: BorderSide.none,
                       borderRadius: BorderRadius.all(
@@ -426,7 +431,6 @@ class _AddEmployeeScreenState extends ConsumerState<AddEmployeeScreen> {
                   AppTextField(
                     height: 65,
                     textController: payController,
-                    fillColor: AppColors.secondary,
                     border: const OutlineInputBorder(
                       borderSide: BorderSide.none,
                       borderRadius: BorderRadius.all(
@@ -453,7 +457,6 @@ class _AddEmployeeScreenState extends ConsumerState<AddEmployeeScreen> {
                     height: 65,
                     textController: addressController,
                     textInputAction: TextInputAction.next,
-                    fillColor: AppColors.secondary,
                     border: const OutlineInputBorder(
                       borderSide: BorderSide.none,
                       borderRadius: BorderRadius.all(
@@ -469,7 +472,6 @@ class _AddEmployeeScreenState extends ConsumerState<AddEmployeeScreen> {
                     height: 65,
                     textController: detailsController,
                     textInputAction: TextInputAction.done,
-                    fillColor: AppColors.secondary,
                     border: const OutlineInputBorder(
                       borderSide: BorderSide.none,
                       borderRadius: BorderRadius.all(
@@ -481,39 +483,52 @@ class _AddEmployeeScreenState extends ConsumerState<AddEmployeeScreen> {
                     lines: 1,
                   ),
                   const SizedBox(height: 20),
-                  ElevatedButton(
-                    onPressed: () async {
-                      if (_formKey.currentState!.validate()) {
-                        showLoaderDialog(
-                          context,
-                        );
+                  Center(
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: AppColors.saveButtonColors,
+                        minimumSize: const Size(200, 50),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(25),
+                        ),
+                      ),
+                      onPressed: () async {
+                        if (_formKey.currentState!.validate()) {
+                          showLoaderDialog(
+                            context,
+                          );
 
-                        final userId = ref.read(userProvider)?.id;
+                          final userId = ref.read(userProvider)?.id;
 
-                        final response =
-                            ref.read(addEmployeeProvider.notifier).addEmployee(
-                                  id: const Uuid().v1(),
-                                  userId: userId ?? '',
-                                  cnicId: cnicController.text,
-                                  fullName: fullNameController.text,
-                                  designation: designationController.text,
-                                  mobileNo: int.parse(mobileNoController.text),
-                                  pay: int.parse(payController.text),
-                                  address: addressController.text,
-                                  selectedImage: pickedImage,
-                                );
+                          final response = ref
+                              .read(addEmployeeProvider.notifier)
+                              .addEmployee(
+                                id: const Uuid().v1(),
+                                userId: userId ?? '',
+                                cnicId: cnicController.text,
+                                fullName: fullNameController.text,
+                                designation: designationController.text,
+                                mobileNo: int.parse(mobileNoController.text),
+                                pay: int.parse(payController.text),
+                                address: addressController.text,
+                                selectedImage: pickedImage,
+                              );
 
-                        response.then((value) {
-                          if (value.errorMessage.isNotEmpty) {
-                            context.showSnackBar(value.errorMessage);
-                          } else {
-                            context.showSuccessSnackBar("Employee Added");
-                            context.pop();
-                          }
-                        });
-                      }
-                    },
-                    child: const Text('Save'),
+                          response.then((value) {
+                            if (value.errorMessage.isNotEmpty) {
+                              context.showSnackBar(value.errorMessage);
+                            } else {
+                              context.showSuccessSnackBar("Employee Added");
+                              context.pop();
+                            }
+                          });
+                        }
+                      },
+                      child: Text(
+                        'Save',
+                        style: context.theme.textTheme.bodyLarge,
+                      ),
+                    ),
                   ),
                 ],
               ),

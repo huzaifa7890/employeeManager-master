@@ -91,7 +91,6 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                   }
                   return null;
                 },
-                fillColor: AppColors.textFieldBackground,
               ),
               const SizedBox(
                 height: 30,
@@ -105,7 +104,6 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                     }
                     return null;
                   },
-                  fillColor: AppColors.textFieldBackground,
                   border: const OutlineInputBorder(
                     borderSide: BorderSide.none,
                     borderRadius: BorderRadius.all(

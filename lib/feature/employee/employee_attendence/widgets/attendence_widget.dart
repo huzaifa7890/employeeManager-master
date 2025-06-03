@@ -19,7 +19,7 @@ class AttendenceMarkWidget extends StatelessWidget {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
         backgroundColor:
-            isSelected ? AppColors.tertiary : theme.colorScheme.shadow,
+            isSelected ? AppColors.secondary : AppColors.textFieldBackground,
         padding: const EdgeInsets.all(6),
         minimumSize: const Size(102, 30),
       ),
@@ -33,8 +33,8 @@ class AttendenceMarkWidget extends StatelessWidget {
                 text,
                 style: theme.textTheme.bodySmall!.copyWith(
                   color: isSelected
-                      ? AppColors.primary
-                      : theme.colorScheme.onInverseSurface,
+                      ? AppColors.whiteColors
+                      : theme.colorScheme.primary,
                   fontSize: isSelected ? 13 : 13,
                   fontWeight: isSelected ? FontWeight.bold : FontWeight.w400,
                 ),

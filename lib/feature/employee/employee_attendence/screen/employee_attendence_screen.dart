@@ -79,7 +79,7 @@ class _EmployeeAttendenceScreenState
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: AppColors.secondary,
+          backgroundColor: AppColors.whiteColors,
           iconTheme: const IconThemeData(color: AppColors.primary),
           title: Text(
             "Employee Attendance",
@@ -97,7 +97,9 @@ class _EmployeeAttendenceScreenState
               children: [
                 Text(
                   "Date",
-                  style: theme.textTheme.bodyLarge,
+                  style: theme.textTheme.bodyLarge!.copyWith(
+                    color: AppColors.primary,
+                  ),
                 ),
                 GestureDetector(
                   onTap: () => _selectDate(context),
@@ -111,8 +113,7 @@ class _EmployeeAttendenceScreenState
                     child: Center(
                       child: Text(
                         DateFormat('dd MMMM y').format(selectedDate!),
-                        style: theme.textTheme.bodyLarge!
-                            .copyWith(color: AppColors.primary),
+                        style: theme.textTheme.bodyLarge,
                       ),
                     ),
                   ),
@@ -165,7 +166,8 @@ class _EmployeeAttendenceScreenState
                                     maxRadius: 60,
                                     minRadius: 60,
                                     backgroundColor: AppColors.tertiary,
-                                    child: employee.employeePic!.isNotEmpty
+                                    child: employee.employeePic?.isNotEmpty ??
+                                            false
                                         ? ClipRRect(
                                             borderRadius:
                                                 BorderRadius.circular(51),
@@ -196,11 +198,11 @@ class _EmployeeAttendenceScreenState
                                 ),
                                 Text(
                                   (employee.designation).toString(),
-                                  style: theme.textTheme.bodyMedium,
+                                  style: theme.textTheme.bodyLarge,
                                 ),
                                 Text(
                                   (employee.cnicId).toString(),
-                                  style: theme.textTheme.bodyMedium,
+                                  style: theme.textTheme.bodyLarge,
                                 ),
                               ],
                             ),
@@ -212,7 +214,7 @@ class _EmployeeAttendenceScreenState
                                 height: 20,
                                 decoration: const BoxDecoration(
                                   shape: BoxShape.circle,
-                                  color: Colors.green,
+                                  color: AppColors.saveButtonColors,
                                 ),
                               ),
                           ],

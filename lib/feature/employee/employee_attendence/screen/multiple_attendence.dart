@@ -105,7 +105,7 @@ class _EmployeeAttendenceScreenState extends ConsumerState<MultipleAttendence> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: AppColors.secondary,
+          backgroundColor: AppColors.whiteColors,
           iconTheme: const IconThemeData(color: AppColors.primary),
           title: Text(
             "Employee Multiple Attendance",
@@ -130,7 +130,9 @@ class _EmployeeAttendenceScreenState extends ConsumerState<MultipleAttendence> {
               children: [
                 Text(
                   "Date",
-                  style: theme.textTheme.bodyLarge,
+                  style: theme.textTheme.bodyLarge!.copyWith(
+                    color: AppColors.primary,
+                  ),
                 ),
                 GestureDetector(
                   onTap: () => _selectDate(context),
@@ -144,8 +146,7 @@ class _EmployeeAttendenceScreenState extends ConsumerState<MultipleAttendence> {
                     child: Center(
                       child: Text(
                         DateFormat('dd MMMM y').format(selectedDate!),
-                        style: theme.textTheme.bodyLarge!
-                            .copyWith(color: AppColors.primary),
+                        style: theme.textTheme.bodyLarge,
                       ),
                     ),
                   ),
@@ -175,7 +176,7 @@ class _EmployeeAttendenceScreenState extends ConsumerState<MultipleAttendence> {
                           borderRadius: BorderRadius.circular(10),
                           color: isSelected
                               ? AppColors.tertiary
-                              : AppColors.primary,
+                              : AppColors.primary.withOpacity(0.4),
                         ),
                         child: Row(
                           children: [

@@ -1,3 +1,4 @@
+import 'package:employeemanager/theme/theme_export.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -109,11 +110,7 @@ class AppTextField extends StatelessWidget {
       maxLength: length,
       validator: validator,
       inputFormatters: inputFormatters,
-      style: textStyle ??
-          theme.textTheme.bodyLarge?.copyWith(
-            fontSize: 16,
-            fontWeight: FontWeight.w500,
-          ),
+      style: textStyle ?? theme.textTheme.bodyMedium,
       keyboardType: keyboardType,
       onTap: onPressed,
       decoration: InputDecoration(
@@ -125,15 +122,14 @@ class AppTextField extends StatelessWidget {
         prefixIcon: prefixIcon,
         // Use prefixIcon if provided
         hintStyle: hintStyle ??
-            theme.textTheme.bodyMedium
-                ?.copyWith(color: theme.colorScheme.tertiary),
+            theme.textTheme.bodyMedium?.copyWith(color: AppColors.primary),
         suffixIcon: suffixIcon,
         labelStyle: labelStyle,
         focusedBorder: border,
         enabledBorder: border,
         errorBorder: border,
         filled: true,
-        fillColor: fillColor,
+        fillColor: fillColor ?? AppColors.textFieldBackground,
         border: border ?? focusedBorder,
         labelText: labelText,
         contentPadding: contentPadding ??

@@ -124,7 +124,7 @@ class _MarkAttendenceSheetState extends ConsumerState<MarkAttendenceSheet> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: AppColors.secondary,
+          backgroundColor: AppColors.whiteColors,
           iconTheme: const IconThemeData(color: AppColors.primary),
           title: Text(
             "Mark Attendence",
@@ -167,23 +167,25 @@ class _MarkAttendenceSheetState extends ConsumerState<MarkAttendenceSheet> {
                                   maxRadius: 60,
                                   minRadius: 60,
                                   backgroundColor: AppColors.tertiary,
-                                  child: widget.employee.employeePic!.isNotEmpty
-                                      ? ClipRRect(
-                                          borderRadius:
-                                              BorderRadius.circular(51),
-                                          child: Image.network(
-                                            widget.employee.employeePic!,
-                                            height: 100,
-                                            width: 100,
-                                            fit: BoxFit.cover,
-                                          ),
-                                        )
-                                      : Image.asset(
-                                          AssetImages.personIcon,
-                                          height: 55,
-                                          width: 55,
-                                          fit: BoxFit.contain,
-                                        ),
+                                  child:
+                                      widget.employee.employeePic?.isNotEmpty ??
+                                              false
+                                          ? ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.circular(51),
+                                              child: Image.network(
+                                                widget.employee.employeePic!,
+                                                height: 100,
+                                                width: 100,
+                                                fit: BoxFit.cover,
+                                              ),
+                                            )
+                                          : Image.asset(
+                                              AssetImages.personIcon,
+                                              height: 55,
+                                              width: 55,
+                                              fit: BoxFit.contain,
+                                            ),
                                 ),
                               ),
                             ],
@@ -198,11 +200,11 @@ class _MarkAttendenceSheetState extends ConsumerState<MarkAttendenceSheet> {
                               ),
                               Text(
                                 (widget.employee.designation).toString(),
-                                style: theme.textTheme.bodyMedium,
+                                style: theme.textTheme.bodyLarge,
                               ),
                               Text(
                                 (widget.employee.cnicId).toString(),
-                                style: theme.textTheme.bodyMedium,
+                                style: theme.textTheme.bodyLarge,
                               ),
                             ],
                           ),
@@ -234,8 +236,7 @@ class _MarkAttendenceSheetState extends ConsumerState<MarkAttendenceSheet> {
                                 ? DateFormat('dd MMMM y').format(selectedDate!)
                                 : DateFormat('dd MMMM y')
                                     .format(DateTime.now()),
-                            style: theme.textTheme.bodyLarge!
-                                .copyWith(color: AppColors.primary),
+                            style: theme.textTheme.bodyLarge,
                           ),
                         ),
                       ),
@@ -302,6 +303,9 @@ class _MarkAttendenceSheetState extends ConsumerState<MarkAttendenceSheet> {
                           },
                           hintStyle: theme.textTheme.bodyLarge,
                           lines: 1,
+                          textStyle: theme.textTheme.bodyLarge!.copyWith(
+                            color: AppColors.whiteColors,
+                          ),
                         ),
                       ),
                     ],
@@ -346,6 +350,9 @@ class _MarkAttendenceSheetState extends ConsumerState<MarkAttendenceSheet> {
                           },
                           hintStyle: theme.textTheme.bodyLarge,
                           lines: 1,
+                          textStyle: theme.textTheme.bodyLarge!.copyWith(
+                            color: AppColors.whiteColors,
+                          ),
                         ),
                       ),
                     ],
@@ -390,6 +397,9 @@ class _MarkAttendenceSheetState extends ConsumerState<MarkAttendenceSheet> {
                           },
                           hintStyle: theme.textTheme.bodyLarge,
                           lines: 1,
+                          textStyle: theme.textTheme.bodyLarge!.copyWith(
+                            color: AppColors.whiteColors,
+                          ),
                         ),
                       ),
                     ],
@@ -431,6 +441,9 @@ class _MarkAttendenceSheetState extends ConsumerState<MarkAttendenceSheet> {
                           },
                           hintStyle: theme.textTheme.bodyLarge,
                           lines: 1,
+                          textStyle: theme.textTheme.bodyLarge!.copyWith(
+                            color: AppColors.whiteColors,
+                          ),
                         ),
                       ),
                     ],
@@ -438,6 +451,13 @@ class _MarkAttendenceSheetState extends ConsumerState<MarkAttendenceSheet> {
                 ),
                 const SizedBox(height: 15),
                 ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: AppColors.saveButtonColors,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(50),
+                    ),
+                    minimumSize: const Size(200, 50),
+                  ),
                   onPressed: () {
                     final response =
                         ref.read(addEmployeeProvider.notifier).updateAttendence(
@@ -455,7 +475,10 @@ class _MarkAttendenceSheetState extends ConsumerState<MarkAttendenceSheet> {
                       }
                     });
                   },
-                  child: const Text('Update'),
+                  child: Text(
+                    'Update',
+                    style: theme.textTheme.bodyLarge,
+                  ),
                 ),
               ],
             ),

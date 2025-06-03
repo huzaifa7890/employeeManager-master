@@ -96,7 +96,7 @@ class _PdfViewScreenState extends ConsumerState<PdfViewScreen> {
               fontWeight: FontWeight.w700,
             ),
           ),
-          backgroundColor: AppColors.secondary,
+          backgroundColor: AppColors.whiteColors,
           iconTheme: const IconThemeData(color: AppColors.primary),
         ),
         body: Column(
@@ -115,13 +115,17 @@ class _PdfViewScreenState extends ConsumerState<PdfViewScreen> {
                         backgroundColor: AppColors.tertiary,
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(51),
-                          child: Image.network(
-                            user?.profilePic ??
-                                'https://cdn.pixabay.com/photo/2017/02/12/21/29/false-2061131_640.png',
-                            height: 100,
-                            width: 100,
-                            fit: BoxFit.cover,
-                          ),
+                          child: user?.profilePic?.isNotEmpty ?? false
+                              ? Image.network(
+                                  user?.profilePic ?? '',
+                                  height: 100,
+                                  width: 100,
+                                  fit: BoxFit.cover,
+                                )
+                              : const Icon(
+                                  Icons.person,
+                                  size: 30,
+                                ),
                         ),
                       ),
                       const SizedBox(height: 10),
@@ -168,20 +172,21 @@ class _PdfViewScreenState extends ConsumerState<PdfViewScreen> {
                         backgroundColor: AppColors.tertiary,
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(51),
-                          child: widget.employee.employeePic!.isNotEmpty
-                              ? Image.network(
-                                  widget.employee.employeePic ??
+                          child:
+                              widget.employee.employeePic?.isNotEmpty ?? false
+                                  ? Image.network(
+                                      widget.employee.employeePic ??
+                                          'https://cdn.pixabay.com/photo/2017/02/12/21/29/false-2061131_640.png',
+                                      height: 100,
+                                      width: 100,
+                                      fit: BoxFit.cover,
+                                    )
+                                  : Image.network(
                                       'https://cdn.pixabay.com/photo/2017/02/12/21/29/false-2061131_640.png',
-                                  height: 100,
-                                  width: 100,
-                                  fit: BoxFit.cover,
-                                )
-                              : Image.network(
-                                  'https://cdn.pixabay.com/photo/2017/02/12/21/29/false-2061131_640.png',
-                                  height: 100,
-                                  width: 100,
-                                  fit: BoxFit.cover,
-                                ),
+                                      height: 100,
+                                      width: 100,
+                                      fit: BoxFit.cover,
+                                    ),
                         ),
                       ),
                       const SizedBox(height: 10),
@@ -222,41 +227,22 @@ class _PdfViewScreenState extends ConsumerState<PdfViewScreen> {
                     columnSpacing: 12,
                     columns: <DataColumn>[
                       DataColumn(
-                          label: Text(
-                        'Date',
-                        style: theme.textTheme.bodyLarge!
-                            .copyWith(color: AppColors.primary),
-                      )),
+                          label:
+                              Text('Date', style: theme.textTheme.bodyLarge)),
                       DataColumn(
-                          label: Text(
-                        'Status',
-                        style: theme.textTheme.bodyLarge!
-                            .copyWith(color: AppColors.primary),
-                      )),
+                          label:
+                              Text('Status', style: theme.textTheme.bodyLarge)),
                       DataColumn(
-                          label: Text(
-                        'Pay',
-                        style: theme.textTheme.bodyLarge!
-                            .copyWith(color: AppColors.primary),
-                      )),
+                          label: Text('Pay', style: theme.textTheme.bodyLarge)),
                       DataColumn(
-                          label: Text(
-                        'Debit',
-                        style: theme.textTheme.bodyLarge!
-                            .copyWith(color: AppColors.primary),
-                      )),
+                          label:
+                              Text('Debit', style: theme.textTheme.bodyLarge)),
                       DataColumn(
-                          label: Text(
-                        'Bonus',
-                        style: theme.textTheme.bodyLarge!
-                            .copyWith(color: AppColors.primary),
-                      )),
+                          label:
+                              Text('Bonus', style: theme.textTheme.bodyLarge)),
                       DataColumn(
-                          label: Text(
-                        'Net Pay',
-                        style: theme.textTheme.bodyLarge!
-                            .copyWith(color: AppColors.primary),
-                      )),
+                          label: Text('Net Pay',
+                              style: theme.textTheme.bodyLarge)),
                     ],
                     rows:
                         widget.employee.employeeAttendence.where((attendance) {
